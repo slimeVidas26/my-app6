@@ -1,20 +1,6 @@
-import { StyleSheet, Text, View , Button ,Image,
-    TextInput,TouchableOpacity, ScrollView } from 'react-native';
-    import { StatusBar } from 'expo-status-bar';
-// import { gql, useQuery } from '@apollo/client';
-// import {Text} from 'react-native'
+import { StyleSheet, Text, View , Button} from 'react-native';
+import { StatusBar } from 'expo-status-bar';
 
-// const HELLO_QUERY = gql`
-// query Query {
-//   hello
-// }
-// `;
-
-// const HELLO_QUERY = gql`
-//     query Query($firstName: String , $lastName : String) {
-//         hello(firstName: $firstName , lastName : $lastName)
-//     }
-// `;
 
 import { translation } from '../i18n/supportedLanguages';
 import * as Localization from 'expo-localization';
@@ -23,17 +9,19 @@ import { I18n } from 'i18n-js';
 const i18n = new I18n(translation);
 // Set the locale once at the beginning of your app.
 i18n.locale = Localization.locale;
+//console.log(i18n.locale)
 // When a value is missing from a language it'll fallback to another language with the key present.
 i18n.enableFallback = true;
 // To see the fallback mechanism uncomment line below to force app to use Japanese language.
- //i18n.locale = 'he';
+ i18n.locale = 'he';
+ //console.log(i18n.locale)
+
 
  //client.httpCache.clearAll()
 
 export const HomeScreen = ({navigation})=>{
 
-    //   console.log('OrderInfoContext' , OrderInfoContext)
-    //  console.log('OrderInfoState' , OrderInfoState())
+   
       return (
         
         <View style={styles.container}>
@@ -93,21 +81,3 @@ export const HomeScreen = ({navigation})=>{
        
       });
 
-// export const HelloScreen = ()=> {
-//     //const { data, loading, error } = useQuery(HELLO_QUERY);
-
-//     const { data, loading, error } = useQuery(HELLO_QUERY, {
-//         variables: {firstName: "Jacob" , lastName : "Dahan"},
-//     });
-
-//     if (loading) return <Text>Loading...</Text>;
-//     if (error) {
-//         console.error('HELLO_QUERY error', error);
-//     }
-
-//     return <Text>
-//         {loading && 'Loading...'}
-//         {error && 'Error (check console logs)'}
-//         {!loading && !error && data?.hello}
-//     </Text>;
-// }
