@@ -19,7 +19,7 @@ i18n.locale = Localization.locale;
 // When a value is missing from a language it'll fallback to another language with the key present.
 i18n.enableFallback = true;
 // To see the fallback mechanism uncomment line below to force app to use Japanese language.
- //i18n.locale = 'he';
+ i18n.locale = 'he';
 
 
 
