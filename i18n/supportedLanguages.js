@@ -22,6 +22,7 @@ All: 'All',
 'Refund Certificate':'Refund Certificate',
 'Supplier Order':'Supplier Order',
 'EntryCertificateEDI':'EntryCertificateEDI',
+'AuthorsEDI': 'AuthorsEDI',
 'Confirmation Of Receipt Of Goods':'Confirmation Of Receipt Of Goods',
 'Confirmation Of Refund Certificate':'Confirmation Of Refund Certificate',
        //Stock

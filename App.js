@@ -30,6 +30,8 @@ import {HelloScreen} from './HelloScreen';
 import {ArrivalScreen} from './screens/Foods/Grid/arrival/ArrivalScreen';
    import {ExpressPurchaseScreen} from './screens/Foods/Grid/arrival/ExpressPurchase/ExpressPurchaseScreen' 
    import {EntryCertificateEDIScreen} from './screens/Foods/Grid/arrival/EntryCertificateEDI/EntryCertificateEDIScreen' 
+   import {AuthorsEDIScreen} from './screens/Foods/Grid/arrival/AuthorsEDIScreen' 
+
   import { DocumentReview } from "./screens/Foods/Grid/arrival/DocumentReview";
    import {Open} from './screens/Foods/Grid/arrival/EntryCertificateEDI/OrderDetail/Open'
    import {All} from './screens/Foods/Grid/arrival/EntryCertificateEDI/OrderDetail/All'
@@ -296,6 +298,8 @@ function App() {
    <Stack.Screen name="Express Purchase" component={ExpressPurchaseScreen} options ={{title:i18n.t("Express Purchase")}}/>
   
    <Stack.Screen name="EntryCertificateEDI" component={EntryCertificateEDIScreen}  />
+   <Stack.Screen name="AuthorsEDI" component={AuthorsEDIScreen}  />
+
    <Stack.Screen name="Document Review" component={DocumentReview} />
 
 <Stack.Screen name="Stock" component={StockScreen} options = {{title:i18n.t("Stock")}} />
