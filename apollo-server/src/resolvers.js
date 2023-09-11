@@ -2,6 +2,7 @@ import {Warehouse} from './models/Warehouse.js';
 import {Department} from './models/Department.js';
 import {Arrival} from './models/Arrival.js';
 import {Supplier} from './models/Supplier.js';
+import {Author} from './models/Author.js';
 
 import {Order} from './models/Order.js';
 import {OrderItem} from './models/OrderItem.js'
@@ -50,6 +51,8 @@ export const resolvers = {
         departments: async () => await Department.find({}),
         arrivals: async () => await Arrival.find({}),
         suppliers: async () => await Supplier.find({}),
+        authors: async () => await Author.find({}),
+
 
         orders: async () => await Order.find({supplierNumber : Supplier.number}),
         orderItems: async () => await OrderItem.find({}),

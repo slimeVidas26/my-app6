@@ -23,9 +23,23 @@ export const typeDefs = gql`
     orders:[Order]
     openOrders:[Order],
     closedOrders: [Order],
-    orderItems: [OrderItem]
+    orderItems: [OrderItem],
+    authors: [Author!]
+    books: [Book!]!
     
   }
+
+  type Author {
+  id: ID!
+  name: String!
+  books: [Book!]
+}
+  type Book {
+  id: ID!
+  name: String!
+  pages: Int
+  author: Author!
+}
 
   type Warehouse {
         id: ID,
