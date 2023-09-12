@@ -25,8 +25,13 @@ export const typeDefs = gql`
     closedOrders: [Order],
     orderItems: [OrderItem],
     authors: [Author!]
-    books: [Book!]!
+    books: [Book!]
     
+  }
+
+  type Mutation {
+    createAuthor(name: String!): Author!
+    createBook(name: String!, pages: Int, author: String!): Book!
   }
 
   type Author {

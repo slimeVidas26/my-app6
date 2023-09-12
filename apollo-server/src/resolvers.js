@@ -3,6 +3,7 @@ import {Department} from './models/Department.js';
 import {Arrival} from './models/Arrival.js';
 import {Supplier} from './models/Supplier.js';
 import {Author} from './models/Author.js';
+import {Book} from './models/Book.js';
 
 import {Order} from './models/Order.js';
 import {OrderItem} from './models/OrderItem.js'
@@ -53,11 +54,25 @@ export const resolvers = {
         suppliers: async () => await Supplier.find({}),
         authors: async () => await Author.find({}),
 
+        books: async () => await Book.find({}),
 
         orders: async () => await Order.find({supplierNumber : Supplier.number}),
         orderItems: async () => await OrderItem.find({}),
         openOrders: async () => await Order.find({isOpen:true}),
         closedOrders: async () => await Order.find({isOpen:false}),
       
+    },
+
+    Mutation: {
+      createAuthor: async (_, { name }) => {
+        const author = new Author({ name });
+        await author.save();
+        return author;
+      },
+      createBook: async (_, { name, pages, author }) => {
+        const book = new Book({ name, pages, author });
+        await book.save();
+        return book;
+      }
     }
 };
