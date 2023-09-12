@@ -38,6 +38,29 @@ const dateScalar = new GraphQLScalarType({
     },
   });
 
+  const books = async bookIds => {
+    try {
+      const books = await Book.find({_id: { $in: bookIds }})
+      return books.map(book => ({
+        ...book._doc,
+        author: author.bind(this, book._doc.author)
+      }))
+    } catch {
+      throw err
+    }
+  }
+  const author = async authorId => {
+    try {
+      const author = await Author.findById(authorId)
+      return {
+        ...author._doc,
+        books: books.bind(this, author._doc.books)
+      }
+    } catch (err) {
+      throw err
+    }
+  }
+
 
 // GraphQL Resolvers
 export const resolvers = {
@@ -52,27 +75,74 @@ export const resolvers = {
         departments: async () => await Department.find({}),
         arrivals: async () => await Arrival.find({}),
         suppliers: async () => await Supplier.find({}),
-        authors: async () => await Author.find({}),
-
-        books: async () => await Book.find({}),
-
+        // authors: async () => await Author.find({}),
+        // books: async () => await Book.find({}),
+        
         orders: async () => await Order.find({supplierNumber : Supplier.number}),
         orderItems: async () => await OrderItem.find({}),
         openOrders: async () => await Order.find({isOpen:true}),
         closedOrders: async () => await Order.find({isOpen:false}),
+
+        authors: async () => {
+          try {
+            const authors = await Author.find()
+            return authors.map(author => ({
+              ...author._doc,
+              books: books.bind(this, author._doc.books)
+            }))
+          } catch (err) {
+            throw err
+          }
+        },
+        books: async () => {
+          try {
+            const books = await Book.find()
+            return books.map(book => ({
+              ...book._doc,
+              author: author.bind(this, book._doc.author)
+            }))
+          } catch (err) {
+            throw err
+          }
+        }
       
     },
 
     Mutation: {
+      // createAuthor: async (_, { name }) => {
+      //   const author = new Author({ name });
+      //   await author.save();
+      //   return author;
+      // },
+      // createBook: async (_, { name, pages, author }) => {
+      //   const book = new Book({ name, pages, author });
+      //   await book.save();
+      //   return book;
+      // }
       createAuthor: async (_, { name }) => {
-        const author = new Author({ name });
-        await author.save();
-        return author;
+        try {
+          const author = new Author({ name })
+          await author.save()
+          return author;
+        } catch (err) {
+          throw err
+        }
       },
-      createBook: async (_, { name, pages, author }) => {
-        const book = new Book({ name, pages, author });
-        await book.save();
-        return book;
+
+      createBook: async (_, { name, pages, author: authorId }) => {
+        const book = new Book({ name, pages, author: authorId })
+        try {
+          const savedBook = await book.save()
+          const authorRecord = await Author.findById(authorId)
+          authorRecord.books.push(book)
+          await authorRecord.save()
+          return {
+            ...savedBook._doc,
+            author: author.bind(this, authorId)
+          }
+        } catch (err) {
+          throw err
+        }
       }
     }
 };
