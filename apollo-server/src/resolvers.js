@@ -4,6 +4,8 @@ import {Arrival} from './models/Arrival.js';
 import {Supplier} from './models/Supplier.js';
 import {Author} from './models/Author.js';
 import {Book} from './models/Book.js';
+import { EdiOrder } from './models/EdiOrder.js';
+import { EdiOrderItem } from './models/EdiOrderItem.js';
 
 import {Order} from './models/Order.js';
 import {OrderItem} from './models/OrderItem.js'
@@ -37,7 +39,7 @@ const dateScalar = new GraphQLScalarType({
       return null;
     },
   });
-
+ //helper
   const books = async bookIds => {
     try {
       const books = await Book.find({_id: { $in: bookIds }})
@@ -49,6 +51,30 @@ const dateScalar = new GraphQLScalarType({
       throw err
     }
   }
+
+  const ediOrderItems = async ediOrderItemsIds => {
+    try {
+      const ediOrderItems = await EdiOrderItem.find({_id: { $in: ediOrderItemsIds }})
+      return ediOrderItems.map(ediOrderItem => ({
+        ...ediOrderItem._doc,
+        ediOrder: ediOrder.bind(this, ediOrderItem._doc.ediOrder)
+      }))
+    } catch {
+      throw err
+    }
+  }
+  const ediOrder = async ediOrderId => {
+    try {
+      const ediOrder = await EdiOrder.findById(ediOrderId)
+      return {
+        ...ediOrder._doc,
+        ediOrderItems: ediOrderItems.bind(this, ediOrder._doc.ediOrderItems)
+      }
+    } catch (err) {
+      throw err
+    }
+  }
+
   const author = async authorId => {
     try {
       const author = await Author.findById(authorId)
@@ -94,12 +120,37 @@ export const resolvers = {
             throw err
           }
         },
+
+        ediOrders: async () => {
+          try {
+            const ediOrders = await EdiOrder.find()
+            return ediOrders.map(ediOrder => ({
+              ...ediOrder._doc,
+              ediOrderItems: ediOrderItems.bind(this, ediOrder._doc.ediOrderItems)
+            }))
+          } catch (err) {
+            throw err
+          }
+        },
+
         books: async () => {
           try {
             const books = await Book.find()
             return books.map(book => ({
               ...book._doc,
               author: author.bind(this, book._doc.author)
+            }))
+          } catch (err) {
+            throw err
+          }
+        },
+        
+        ediOrderItems: async () => {
+          try {
+            const ediOrderItems = await EdiOrderItem.find()
+            return ediOrderItems.map(ediOrderItem => ({
+              ...ediOrderItem._doc,
+              ediOrder: ediOrder.bind(this, ediOrderItem._doc.ediOrder)
             }))
           } catch (err) {
             throw err
@@ -129,6 +180,16 @@ export const resolvers = {
         }
       },
 
+      createEdiOrder: async (_, { orderNumber }) => {
+        try {
+          const ediOrder = new EdiOrder({ orderNumber })
+          await ediOrder.save()
+          return ediOrder;
+        } catch (err) {
+          throw err
+        }
+      },
+
       createBook: async (_, { name, pages, author: authorId }) => {
         const book = new Book({ name, pages, author: authorId })
         try {
@@ -139,6 +200,22 @@ export const resolvers = {
           return {
             ...savedBook._doc,
             author: author.bind(this, authorId)
+          }
+        } catch (err) {
+          throw err
+        }
+      },
+
+      createEdiOrderItem: async (_, { code, product_name, ediOrder: ediOrderId }) => {
+        const ediOrderItem = new Book({ code, product_name, ediOrder: ediOrderId })
+        try {
+          const savedEdiOrderItem = await ediOrderItem.save()
+          const ediOrderRecord = await EdiOrder.findById(ediOrderId)
+          ediOrderRecord.ediOrderItems.push(ediOrderItem)
+          await ediOrderRecord.save()
+          return {
+            ...savedEdiOrderItem._doc,
+            ediOrder: ediOrder.bind(this, ediOrderId)
           }
         } catch (err) {
           throw err

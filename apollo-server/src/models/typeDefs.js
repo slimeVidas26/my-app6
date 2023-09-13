@@ -16,22 +16,28 @@ export const typeDefs = gql`
 
   type Query {
     hello(firstName:String , lastName : String): String,
-    warehouses: [Warehouse],
-    departments: [Department],
-    arrivals:[Arrival],
-    suppliers:[Supplier],
-    orders:[Order]
-    openOrders:[Order],
-    closedOrders: [Order],
-    orderItems: [OrderItem],
+    warehouses: [Warehouse!],
+    departments: [Department!],
+    arrivals:[Arrival!],
+    suppliers:[Supplier!],
+    orders:[Order!]
+    openOrders:[Order!],
+    closedOrders: [Order!],
+    orderItems: [OrderItem!],
     authors: [Author!]
     books: [Book!]
+    ediOrders:[EdiOrder!]
+    ediOrderItems:[EdiOrderItem!]
     
   }
 
   type Mutation {
     createAuthor(name: String!): Author!
+    createEdiOrder(orderNumber: String!): EdiOrder!
+
     createBook(name: String!, pages: Int, author: String!): Book!
+    createEdiOrderItem(code: String!, product_name: Int, ediOrder: String!): EdiOrderItem!
+
   }
 
   type Author {
@@ -39,6 +45,20 @@ export const typeDefs = gql`
   name: String!
   books: [Book!]
 }
+
+type EdiOrder {
+  id: ID!
+  orderNumber: String!
+  isOpen:Boolean
+  ediOrderItems: [EdiOrderItem!]
+}
+
+type EdiOrderItem {
+     id: ID!,
+     code: String,
+      product_name: String,
+      }
+
   type Book {
   id: ID!
   name: String!
