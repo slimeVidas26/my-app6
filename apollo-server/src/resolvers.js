@@ -144,7 +144,7 @@ export const resolvers = {
             throw err
           }
         },
-        
+
         ediOrderItems: async () => {
           try {
             const ediOrderItems = await EdiOrderItem.find()
@@ -160,6 +160,8 @@ export const resolvers = {
     },
 
     Mutation: {
+
+
       // createAuthor: async (_, { name }) => {
       //   const author = new Author({ name });
       //   await author.save();
@@ -206,8 +208,8 @@ export const resolvers = {
         }
       },
 
-      createEdiOrderItem: async (_, { code, product_name, ediOrder: ediOrderId }) => {
-        const ediOrderItem = new Book({ code, product_name, ediOrder: ediOrderId })
+      createEdiOrderItem: async (_, { code, product, ediOrder: ediOrderId }) => {
+        const ediOrderItem = new EdiOrderItem({ code, product, ediOrder: ediOrderId })
         try {
           const savedEdiOrderItem = await ediOrderItem.save()
           const ediOrderRecord = await EdiOrder.findById(ediOrderId)
@@ -218,8 +220,11 @@ export const resolvers = {
             ediOrder: ediOrder.bind(this, ediOrderId)
           }
         } catch (err) {
+
           throw err
         }
+      
       }
     }
 };
+

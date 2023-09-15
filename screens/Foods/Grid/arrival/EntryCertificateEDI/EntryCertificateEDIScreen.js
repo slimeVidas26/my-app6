@@ -21,7 +21,7 @@ i18n.enableFallback = true;
 // i18n.locale = 'ja';
 
 import { useQuery } from "@apollo/client";
-import {OPEN_ORDERS_QUERY} from '../../../../../gql/Query'
+import {EDI_ORDERS_QUERY} from '../../../../../gql/Query'
 
 export const  EntryCertificateEDIScreen = () =>{
 
@@ -31,11 +31,12 @@ export const  EntryCertificateEDIScreen = () =>{
     inputPlaceholder,  
   } = useContext(EDIContext);
 
-  const {data, error, loading} = useQuery(OPEN_ORDERS_QUERY);
+  const {data, error, loading} = useQuery(EDI_ORDERS_QUERY);
   console.log('data' , data)
+  console.log('data' , data.ediOrders[0].orderNumber)
 
   if (error) {
-    console.error('ORDER_QUERY error', error);
+    console.error('EDI_QUERY error', error);
 }
 
   //console.log('openData' , openData())
@@ -196,9 +197,10 @@ export const  EntryCertificateEDIScreen = () =>{
 
          
           
-     const renderItem = ({ item}) => (
+     const renderItem = ({ data}) => (
  
-            <EDIitem item={item}
+            <EDIitem data={data}
+                   orderNumber = {data.ediOrders[0].orderNumber}
                    reference = {item.reference}
                    date = {item.date}
                    supplier={item.supplier }
@@ -293,9 +295,9 @@ export const  EntryCertificateEDIScreen = () =>{
      { 
       //all the orders
      ordersList && <FlatList 
-    data={data.openOrders}
+    data={data.ediOrders}
     renderItem={renderItem}
-    keyExtractor={item => item.reference} 
+    keyExtractor={item => item.orderNumber} 
     ListEmptyComponent={myListEmpty}
     /> }
       </>

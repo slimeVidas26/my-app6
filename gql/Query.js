@@ -51,6 +51,13 @@ query OpenOrdersQuery {
     }
 }`
 
+export  const EDI_ORDERS_QUERY = gql`
+query OpenOrdersQuery {
+    ediOrders {
+    orderNumber
+    }
+}`
+
 export  const CLOSED_ORDERS_QUERY = gql`
 query ClosedOrdersQuery {
      closedOrders {
