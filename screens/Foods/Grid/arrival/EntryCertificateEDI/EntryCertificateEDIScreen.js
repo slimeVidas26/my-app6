@@ -32,7 +32,7 @@ export const  EntryCertificateEDIScreen = () =>{
   } = useContext(EDIContext);
 
   const {data, error, loading} = useQuery(EDI_ORDERS_QUERY);
-  console.log('data' , data.ediOrders[0].orderNumber)
+  console.log('data' , data)
 
   if (error) {
     console.error('EDI_QUERY error', error);
