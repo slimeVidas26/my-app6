@@ -20,9 +20,7 @@ import { TabRouter, useNavigation , useRoute } from '@react-navigation/native'
                 searchIcon: true,
                 rows } )  }}>
     <View style={styles.item}>
-      <Text style={styles.title}>Reference : {item.reference}</Text>
-      <Text style={styles.title}>Date : {item.date}</Text>
-      <Text style={styles.title}>Supplier :{item.supplier}</Text>
+      <Text style={styles.title}>orderNumber : {item.ediOrders[0].orderNumber}</Text>
       <Text style={styles.title}>Rows :{item.rows}</Text>
       <Text style={styles.title}>Quantity :{item.quantity}</Text>
        <Text style={styles.title}>Supplied :{item.supplied}</Text>

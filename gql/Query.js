@@ -52,7 +52,7 @@ query OpenOrdersQuery {
 }`
 
 export  const EDI_ORDERS_QUERY = gql`
-query OpenOrdersQuery {
+query EdiOrdersQuery {
     ediOrders {
     orderNumber
     }

@@ -32,7 +32,6 @@ export const  EntryCertificateEDIScreen = () =>{
   } = useContext(EDIContext);
 
   const {data, error, loading} = useQuery(EDI_ORDERS_QUERY);
-  console.log('data' , data)
   console.log('data' , data.ediOrders[0].orderNumber)
 
   if (error) {
@@ -197,13 +196,11 @@ export const  EntryCertificateEDIScreen = () =>{
 
          
           
-     const renderItem = ({ data}) => (
+     const renderItem = ({ item}) => (
  
-            <EDIitem data={data}
+            <EDIitem item={data}
+                   
                    orderNumber = {data.ediOrders[0].orderNumber}
-                   reference = {item.reference}
-                   date = {item.date}
-                   supplier={item.supplier }
                    rows={item.rows }
                    quantity={item.quantity }
                    supplied={item.supplied }
@@ -278,7 +275,7 @@ export const  EntryCertificateEDIScreen = () =>{
               ( 
   
                 <FlatList 
-                  data={item}
+                  data={data.ediOrders}
                   renderItem={renderItem}
                   keyExtractor={item => item.id} 
                   ListEmptyComponent={myListEmpty}
@@ -297,7 +294,7 @@ export const  EntryCertificateEDIScreen = () =>{
      ordersList && <FlatList 
     data={data.ediOrders}
     renderItem={renderItem}
-    keyExtractor={item => item.orderNumber} 
+    keyExtractor={item => item.id} 
     ListEmptyComponent={myListEmpty}
     /> }
       </>
