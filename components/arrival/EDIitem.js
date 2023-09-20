@@ -23,8 +23,8 @@ import { TabRouter, useNavigation , useRoute } from '@react-navigation/native'
       <Text style={styles.title}>orderNumber : {item.ediOrders[0].orderNumber}</Text>
       <Text style={styles.title}>Date :{item.ediOrders[0].date}</Text>
 
-      <Text style={styles.title}>Rows :{item.rows}</Text>
-      <Text style={styles.title}>Quantity :{item.quantity}</Text>
+      <Text style={styles.title}>Rows :{item.ediOrders[0].rows}</Text>
+      <Text style={styles.title}>Quantity :{item.ediOrders[0].quantity}</Text>
        <Text style={styles.title}>Supplied :{item.supplied}</Text>
       <Text style={styles.title}>isOpen :{item.isOpen}</Text>
       

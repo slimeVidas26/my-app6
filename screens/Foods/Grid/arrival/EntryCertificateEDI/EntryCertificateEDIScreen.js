@@ -200,9 +200,8 @@ export const  EntryCertificateEDIScreen = () =>{
  
             <EDIitem item={data}
                    
-                   orderNumber = {data.ediOrders[0].orderNumber}
-                   date = {data.ediOrders[0].date}
-
+                   orderNumber = {item.orderNumber}
+                   date = {item.date}
                    rows={item.rows }
                    quantity={item.quantity }
                    supplied={item.supplied }
@@ -279,7 +278,7 @@ export const  EntryCertificateEDIScreen = () =>{
                 <FlatList 
                   data={data.ediOrders}
                   renderItem={renderItem}
-                  keyExtractor={item => item.id} 
+                  keyExtractor={item =>item.id}
                   ListEmptyComponent={myListEmpty}
                      />
                 

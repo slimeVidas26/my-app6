@@ -184,9 +184,9 @@ export const resolvers = {
         }
       },
 
-      createEdiOrder: async (_, { orderNumber }) => {
+      createEdiOrder: async (_, { orderNumber , rows , quantity }) => {
         try {
-          const ediOrder = new EdiOrder({ orderNumber })
+          const ediOrder = new EdiOrder({ orderNumber  , rows , quantity})
           await ediOrder.save()
           return ediOrder;
         } catch (err) {

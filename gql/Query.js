@@ -56,6 +56,8 @@ query EdiOrdersQuery {
     ediOrders {
     orderNumber
     date
+    rows
+    quantity
     }
 }`
 
