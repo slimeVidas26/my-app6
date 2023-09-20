@@ -49,6 +49,7 @@ export const typeDefs = gql`
 type EdiOrder {
   id: ID!
   orderNumber: String!
+  date: Date!
   isOpen:Boolean
   ediOrderItems: [EdiOrderItem!]
 }

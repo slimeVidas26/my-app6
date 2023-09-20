@@ -39,6 +39,8 @@ const dateScalar = new GraphQLScalarType({
       return null;
     },
   });
+
+  console.log(Date.now())
  //helper
   const books = async bookIds => {
     try {

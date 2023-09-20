@@ -21,6 +21,8 @@ import { TabRouter, useNavigation , useRoute } from '@react-navigation/native'
                 rows } )  }}>
     <View style={styles.item}>
       <Text style={styles.title}>orderNumber : {item.ediOrders[0].orderNumber}</Text>
+      <Text style={styles.title}>Date :{item.ediOrders[0].date}</Text>
+
       <Text style={styles.title}>Rows :{item.rows}</Text>
       <Text style={styles.title}>Quantity :{item.quantity}</Text>
        <Text style={styles.title}>Supplied :{item.supplied}</Text>

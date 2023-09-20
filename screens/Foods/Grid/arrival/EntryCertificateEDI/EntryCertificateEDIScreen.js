@@ -201,6 +201,8 @@ export const  EntryCertificateEDIScreen = () =>{
             <EDIitem item={data}
                    
                    orderNumber = {data.ediOrders[0].orderNumber}
+                   date = {data.ediOrders[0].date}
+
                    rows={item.rows }
                    quantity={item.quantity }
                    supplied={item.supplied }
