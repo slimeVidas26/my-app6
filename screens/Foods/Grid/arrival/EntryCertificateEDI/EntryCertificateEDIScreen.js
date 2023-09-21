@@ -51,7 +51,7 @@ export const  EntryCertificateEDIScreen = () =>{
 
     const navigation = useNavigation()
     const route = useRoute();
-    //console.log('Current Route: ', route.name);
+    console.log('Current Route: ', route.name);
 
     const [item , setItem] = useState(null);
     const [message, setMessage] = useState('');
@@ -93,10 +93,11 @@ export const  EntryCertificateEDIScreen = () =>{
 
       
       const searchOrder = async()=>{  
-
         //reference
-        const getItemByReference = openData.filter(item => 
+        const getItemByReference = data.ediOrders.filter(item => 
               {
+                console.log("dataInSearchOrder" , data)
+
                 if(
                   (item.reference.includes(number) && number.length > 2)
                   || item.reference  === number
@@ -197,6 +198,7 @@ export const  EntryCertificateEDIScreen = () =>{
          
           
      const renderItem = ({ item}) => (
+      // console.log("item" , item)
  
             <EDIitem item={data}
                    
@@ -278,7 +280,7 @@ export const  EntryCertificateEDIScreen = () =>{
                 <FlatList 
                   data={data.ediOrders}
                   renderItem={renderItem}
-                  keyExtractor={item =>item.id}
+                  keyExtractor={item =>item._id}
                   ListEmptyComponent={myListEmpty}
                      />
                 
@@ -295,7 +297,7 @@ export const  EntryCertificateEDIScreen = () =>{
      ordersList && <FlatList 
     data={data.ediOrders}
     renderItem={renderItem}
-    keyExtractor={item => item.id} 
+    keyExtractor={item => item._id} 
     ListEmptyComponent={myListEmpty}
     /> }
       </>
