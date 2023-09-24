@@ -52,6 +52,8 @@ export const  EntryCertificateEDIScreen = () =>{
     const navigation = useNavigation()
     const route = useRoute();
     console.log('Current Route: ', route.name);
+    console.log('route params: ', route.params);
+
 
     const [item , setItem] = useState(null);
     const [message, setMessage] = useState('');
@@ -148,6 +150,7 @@ export const  EntryCertificateEDIScreen = () =>{
           
         
         }else if (number){
+          
           if(resultFromReference.length > 0  && resultFromCode.length ===0 ){
             startLoading()
               setShouldShow(true) 
