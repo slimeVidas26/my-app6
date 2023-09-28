@@ -257,10 +257,15 @@ export const  EntryCertificateEDIScreen = () =>{
                 {showIcon ?
            ( <TouchableOpacity onPress={handleClear}>
             <View>
-              {route.params.searchIcon ? 
+              {!route.params.searchIcon ? 
               (
-                <Ionicons style={styles.icon } name="search" size={24} color="black" />)
-             :(<AntDesign  style={styles.icon }  name="closesquare" size={24} color="black" />)}
+                <AntDesign  style={styles.icon }  name="closesquare" size={24} color="black" />
+
+                )
+             :(
+              <Ionicons style={styles.icon } name="search" size={24} color="black" />
+
+              )}
             </View>
           </TouchableOpacity>
         ) : null}
