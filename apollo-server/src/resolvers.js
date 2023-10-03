@@ -210,8 +210,8 @@ export const resolvers = {
         }
       },
 
-      createEdiOrderItem: async (_, { code, product, ediOrder: ediOrderId }) => {
-        const ediOrderItem = new EdiOrderItem({ code, product, ediOrder: ediOrderId })
+      createEdiOrderItem: async (_, { code, product,quantity ,  ediOrder: ediOrderId }) => {
+        const ediOrderItem = new EdiOrderItem({ code, product,quantity ,  ediOrder: ediOrderId })
         try {
           const savedEdiOrderItem = await ediOrderItem.save()
           const ediOrderRecord = await EdiOrder.findById(ediOrderId)

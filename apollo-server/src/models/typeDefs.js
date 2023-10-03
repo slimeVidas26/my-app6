@@ -36,7 +36,7 @@ export const typeDefs = gql`
     createEdiOrder(orderNumber: String! , rows:Int! ,quantity:Int!): EdiOrder!
 
     createBook(name: String!, pages: Int, author: String!): Book!
-    createEdiOrderItem(code: String, product: String!, ediOrder: String!): EdiOrderItem!
+    createEdiOrderItem(code: String, product: String!,quantity:Int! ,  ediOrder: String!): EdiOrderItem!
 
   }
 
@@ -60,6 +60,7 @@ type EdiOrderItem {
      id: ID!,
      code: String,
       product: String,
+      quantity: Int!
       ediOrder: EdiOrder!
       }
 
