@@ -27,15 +27,15 @@ export const Open = ({route}) => {
 
     const ref = route.params.orderNumber;
     const searchIcon = route.params.searchIcon;
-    //const initialRows = route.params.item.order_details.length;
+    ///const initialRows = route.params.item.order_details.length;
 
     //const openState = OrderInfoState();
     //console.log('openState' , openState)
     //const openStateData = openState.data;
     //console.log('openStateData' , openStateData)
 
-    const openTab = data.filter((item )=>item.reference=== ref).map((item)=>  item.order_details
-    .filter((order)=>order.isOpen === 'true')).flat()
+/// const openTab = data.filter((item )=>item.reference=== ref).map((item)=>  item.order_details
+    // .filter((order)=>order.isOpen === 'true')).flat()
 
     
 
@@ -50,7 +50,7 @@ export const Open = ({route}) => {
     
     //console.log('openState' , openState)
 
-  const store = {...OrderInfoState() , ref , searchIcon , initialRows , openTab }
+  ///const store = {...OrderInfoState() , ref , searchIcon , initialRows , openTab }
   //console.log('store' , store)
     //EDIContext
 //  const [orderInfo, setOrderInfo] = useState({

@@ -111,7 +111,7 @@ export const resolvers = {
         orderItems: async () => await OrderItem.find({}),
         openOrders: async () => await Order.find({isOpen:true}),
         closedOrders: async () => await Order.find({isOpen:false}),
-        ediOrderItemsByNumber: async () => await EdiOrderItem.find({ ediOrder: { $eq: "651d2b6fbd737353eb2c50db" } }),
+        ediOrderItemsByNumber: async () => await EdiOrderItem.find({ quantity: { $eq: 55 } }),
         
 
         authors: async () => {
