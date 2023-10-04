@@ -61,6 +61,17 @@ query EdiOrdersQuery {
     }
 }`
 
+export  const EDI_ORDER_ITEMS_BY_NUMBER_QUERY = gql`
+query EdiOrderItemsByNumberQuery {
+    ediOrderItemsByNumber {
+        product
+        quantity
+        code
+    }
+}`
+
+
+
 export  const CLOSED_ORDERS_QUERY = gql`
 query ClosedOrdersQuery {
      closedOrders {

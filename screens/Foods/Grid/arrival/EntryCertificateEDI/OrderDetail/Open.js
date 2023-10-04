@@ -13,21 +13,21 @@ import { DocumentReview } from '../../DocumentReview';
 
 
 import { useQuery } from "@apollo/client";
-import {CLOSED_ORDERS_QUERY } from '../../../../../../gql/Query'
+import {EDI_ORDER_ITEMS_BY_NUMBER_QUERY } from '../../../../../../gql/Query'
 
 export const Open = ({route}) => {
 
-  const {data, error, loading} =  useQuery(CLOSED_ORDERS_QUERY);
-  console.log('CLOSED_ORDERS_QUERY data from open' , data)
+  const {data, error, loading} =  useQuery(EDI_ORDER_ITEMS_BY_NUMBER_QUERY);
+  console.log('EDI_ORDER_ITEMS_BY_NUMBER_QUERY data from open' , data)
 
   if (error) {
-    console.error('CLOSED_ORDERS_QUERY error', error);
+    console.error('EDI_ORDER_ITEMS_BY_NUMBER_QUERY error', error);
 }
     const Stack = createNativeStackNavigator();
 
-    const ref = route.params.item.reference;
+    const ref = route.params.orderNumber;
     const searchIcon = route.params.searchIcon;
-    const initialRows = route.params.item.order_details.length;
+    //const initialRows = route.params.item.order_details.length;
 
     //const openState = OrderInfoState();
     //console.log('openState' , openState)
