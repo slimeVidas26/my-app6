@@ -9,6 +9,8 @@ export  const WAREHOUSES_QUERY = gql`
          }
      }`
 
+ 
+
 export  const DEPARTMENTS_QUERY = gql`
      query DepartmentQuery {
          departments {

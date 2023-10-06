@@ -99,7 +99,7 @@ export const resolvers = {
     //     hello: () => "Hello from Apollo Server"
     // }
     Query: {
-        hello: (_ , {firstName , lastName}) => `Hello ${firstName}  ${lastName}`,
+        hello: (_ , {name}) => `Hello ${name}`,
         warehouses: async () => await Warehouse.find({}),
         departments: async () => await Department.find({}),
         arrivals: async () => await Arrival.find({}),
@@ -111,7 +111,7 @@ export const resolvers = {
         orderItems: async () => await OrderItem.find({}),
         openOrders: async () => await Order.find({isOpen:true}),
         closedOrders: async () => await Order.find({isOpen:false}),
-        ediOrderItemsByNumber: async () => await EdiOrderItem.find({quantity: 77}),
+        ediOrderItemsByNumber: async () => await EdiOrderItem.find({code: "code11"}),
 
         authors: async () => {
           try {

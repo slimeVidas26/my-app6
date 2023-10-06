@@ -10,6 +10,8 @@ import {View , StyleSheet} from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 //import  data  from "../../../../../../data/Datas";
 import { DocumentReview } from '../../DocumentReview';
+import { gql } from "@apollo/client";
+
 
 
 import { useQuery } from "@apollo/client";
@@ -22,7 +24,25 @@ export const Open = ({route}) => {
 
   if (error) {
     console.error('EDI_ORDER_ITEMS_BY_NUMBER_QUERY error', error);
+  }
+
+    const HELLO_QUERY = gql`
+    query Query($name: String) {
+    hello(name: $name)
 }
+`
+
+const { data1, loading1, error1 } = useQuery(HELLO_QUERY, {
+  variables: {name: "Jacob"},
+});
+
+console.log('HELLO_QUERY' , data1)
+
+if (error) {
+  console.error('HELLO_QUERY error', error1);
+}
+
+
     const Stack = createNativeStackNavigator();
 
     const ref = route.params.orderNumber;
