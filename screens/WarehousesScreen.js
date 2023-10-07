@@ -27,6 +27,8 @@ const i18n = new I18n(translation);
   if (error) {
     console.error('WAREHOUSE_QUERY error', error);
 }
+
+
   
 
   const WarehouseItem = ({ warehouse}) => {

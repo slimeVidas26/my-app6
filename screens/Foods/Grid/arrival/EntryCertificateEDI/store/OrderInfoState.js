@@ -11,7 +11,6 @@ const OrderInfoState = () => {
 
     const [OrderInfo, setOrderInfo] = useState({
         data : data , 
-        
         closedData : data.filter((item)=>item.isOpen===false),
 
         inputPlaceholder :'Search Order',

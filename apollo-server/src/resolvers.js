@@ -99,7 +99,7 @@ export const resolvers = {
     //     hello: () => "Hello from Apollo Server"
     // }
     Query: {
-        hello: (_ , {name}) => `Hello ${name}`,
+        hello: (_, {name}) => `Hello ${name}`,
         warehouses: async () => await Warehouse.find({}),
         departments: async () => await Department.find({}),
         arrivals: async () => await Arrival.find({}),

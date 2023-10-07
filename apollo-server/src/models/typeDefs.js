@@ -15,7 +15,7 @@ export const typeDefs = gql`
 
 
   type Query {
-    hello(name:String): String,
+    hello(name: String): String
     warehouses: [Warehouse!],
     departments: [Department!],
     arrivals:[Arrival!],

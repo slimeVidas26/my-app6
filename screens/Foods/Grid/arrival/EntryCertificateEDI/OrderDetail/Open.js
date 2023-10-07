@@ -15,6 +15,7 @@ import { gql } from "@apollo/client";
 
 
 import { useQuery } from "@apollo/client";
+
 import {EDI_ORDER_ITEMS_BY_NUMBER_QUERY } from '../../../../../../gql/Query'
 
 export const Open = ({route}) => {
@@ -25,6 +26,9 @@ export const Open = ({route}) => {
   if (error) {
     console.error('EDI_ORDER_ITEMS_BY_NUMBER_QUERY error', error);
   }
+
+
+  
 
     const HELLO_QUERY = gql`
     query Query($name: String) {
@@ -43,10 +47,10 @@ if (error) {
 }
 
 
-    const Stack = createNativeStackNavigator();
+    // const Stack = createNativeStackNavigator();
 
-    const ref = route.params.orderNumber;
-    const searchIcon = route.params.searchIcon;
+    // const ref = route.params.orderNumber;
+    // const searchIcon = route.params.searchIcon;
     ///const initialRows = route.params.item.order_details.length;
 
     //const openState = OrderInfoState();
@@ -95,48 +99,48 @@ if (error) {
     // setClosedData
     // }
 
-  return (
+//   return (
     
-<EDIContext.Provider value={store}>
-<Stack.Navigator >
+// <EDIContext.Provider value={store}>
+// <Stack.Navigator >
 
-  <Stack.Group
-  screenOptions={({route , navigation}) => ({
-   headerShown:true,
-   headerTitleAlign: 'center',
-   headerStyle: {
-        backgroundColor: '#2F95D6',
-        borderBottomColor: '#fff',
-        borderBottomWidth: 3,
-      },
-      headerTintColor: '#fff',
-       headerTitleStyle: {
-        fontSize: 18,
-      },
+//   <Stack.Group
+//   screenOptions={({route , navigation}) => ({
+//    headerShown:true,
+//    headerTitleAlign: 'center',
+//    headerStyle: {
+//         backgroundColor: '#2F95D6',
+//         borderBottomColor: '#fff',
+//         borderBottomWidth: 3,
+//       },
+//       headerTintColor: '#fff',
+//        headerTitleStyle: {
+//         fontSize: 18,
+//       },
      
-           headerLeft:()=>  <View style={{
-        flexDirection: "row",
-        padding: 1,
-        justifyContent: "space-between",
-        alignItems: "center" ,
-        }}>
+//            headerLeft:()=>  <View style={{
+//         flexDirection: "row",
+//         padding: 1,
+//         justifyContent: "space-between",
+//         alignItems: "center" ,
+//         }}>
      
-        <Ionicons  name="close-circle-outline" size={30} color="#fff"
-        onPress={()=>navigation.goBack()} />
-      </View>
-  })}
-  >
-  <Stack.Screen   name="OrderDetailScreenOpen" component={OrderDetailScreenOpen}/>
-  <Stack.Screen  name="FormEDIScreen" component={FormEDIScreen} />
-  <Stack.Screen   name="SignFormScreen" component={SignFormScreen} />
-  <Stack.Screen   name="ChooseRedStampReasonScreen" component={ChooseRedStampReasonScreen} />
+//         <Ionicons  name="close-circle-outline" size={30} color="#fff"
+//         onPress={()=>navigation.goBack()} />
+//       </View>
+//   })}
+//   >
+//   <Stack.Screen   name="OrderDetailScreenOpen" component={OrderDetailScreenOpen}/>
+//   <Stack.Screen  name="FormEDIScreen" component={FormEDIScreen} />
+//   <Stack.Screen   name="SignFormScreen" component={SignFormScreen} />
+//   <Stack.Screen   name="ChooseRedStampReasonScreen" component={ChooseRedStampReasonScreen} />
 
 
-  </Stack.Group>
-</Stack.Navigator>
-</EDIContext.Provider>
+//   </Stack.Group>
+// </Stack.Navigator>
+// </EDIContext.Provider>
 
-  )
+//   )
 }
 
 
