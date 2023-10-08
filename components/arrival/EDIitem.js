@@ -3,7 +3,7 @@ import {View , Text , StyleSheet , TouchableOpacity} from 'react-native'
 import { TabRouter, useNavigation , useRoute } from '@react-navigation/native'
 
 
- export const EDIitem = ({orderNumber , date , rows , quantity}) => {
+ export const EDIitem = ({id , orderNumber , date , rows , quantity}) => {
   const navigation = useNavigation()
   const route = useRoute()
   // const D = new Date(item.date)
@@ -16,6 +16,7 @@ import { TabRouter, useNavigation , useRoute } from '@react-navigation/native'
       {  
         
             navigation.navigate('MyTabs',{
+              id,
                 orderNumber,
                 date , 
                 rows , 

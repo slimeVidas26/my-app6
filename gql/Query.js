@@ -72,6 +72,7 @@ query OpenOrdersQuery {
 export  const EDI_ORDERS_QUERY = gql`
 query EdiOrdersQuery {
     ediOrders {
+    
     orderNumber
     date
     rows
