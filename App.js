@@ -95,7 +95,7 @@ function MyTabs({route , navigation}) {
     const setNavigationConfig = () => {
       const navigationOptions = () => {
 
-        let rows = route.params.item.order_details.length
+        //let rows = route.params.item.order_details.length
         //console.log('length' , route.params.item.order_details.length)
       
         return {

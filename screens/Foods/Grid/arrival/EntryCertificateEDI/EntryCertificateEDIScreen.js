@@ -96,13 +96,13 @@ export const  EntryCertificateEDIScreen = () =>{
       
       const searchOrder = async()=>{  
         //reference
-        const getItemByReference = data.ediOrders.filter(item => 
+        const getItemByOrderNumber = data.ediOrders.filter(item => 
               {
                 console.log("dataInSearchOrder" , data)
 
                 if(
-                  (item.reference.includes(number) && number.length > 2)
-                  || item.reference  === number
+                  (item.orderNumber.includes(number) && number.length > 2)
+                  || item.orderNumber  === number
                   ){
                      return  item
               }
@@ -110,13 +110,13 @@ export const  EntryCertificateEDIScreen = () =>{
           
         );  
         let promiseRef = new Promise((resolve, reject) => {
-        resolve(getItemByReference)});
+        resolve(getItemByOrderNumber)});
         
         let resultFromReference =  await promiseRef; // attendre que la promesse soit résolue (*)
         //console.log('resultFromReference' , resultFromReference)
 
         //////////////////////////////////////////////////////////////////
-        let getItemByCode = openData.filter((item)=>{
+        let getItemByCodeProduct = openData.filter((item)=>{
           let getOrderDetails = item.order_details.map((orderDetail)=> orderDetail)
           // console.log('getOrderDetails' , getOrderDetails)
           for (let index = 0; index < getOrderDetails.length; index++) {
@@ -127,10 +127,10 @@ export const  EntryCertificateEDIScreen = () =>{
           }  
         })
 
-        //console.log('getItemByCode' , getItemByCode)
+        //console.log('getItemByCodeProduct' , getItemByCodeProduct)
 
         let promiseFromCode = new Promise((resolve, reject) => {
-          resolve(getItemByCode)});
+          resolve(getItemByCodeProduct)});
           
           let resultFromCode =  await promiseFromCode; // attendre que la promesse soit résolue (*)
           //console.log('resultFromCode' , resultFromCode)

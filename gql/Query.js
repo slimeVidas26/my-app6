@@ -6,6 +6,17 @@ import { gql } from "@apollo/client";
  }
 `
 
+
+
+export  const EDI_ORDER_ITEMS_BY_NUMBER_QUERY = gql`
+query EdiOrderItemsByNumberQuery($ediOrder : String) {
+    ediOrderItemsByNumber(ediOrder: $ediOrder) {
+        product
+        quantity
+        code
+    }
+}`
+
 export  const WAREHOUSES_QUERY = gql`
      query WarehouseQuery {
          warehouses {
@@ -68,14 +79,7 @@ query EdiOrdersQuery {
     }
 }`
 
-export  const EDI_ORDER_ITEMS_BY_NUMBER_QUERY = gql`
-query EdiOrderItemsByNumberQuery {
-    ediOrderItemsByNumber {
-        product
-        quantity
-        code
-    }
-}`
+
 
 
 

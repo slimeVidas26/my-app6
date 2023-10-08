@@ -20,7 +20,19 @@ import { HELLO_QUERY } from '../../../../../../gql/Query';
 
 export const Open = ({route}) => {
 
-  
+  // const { data, loading, error } = useQuery(HELLO_QUERY, {
+//   variables: {name: "Jacob"},
+// });
+
+  const {data, error, loading} =  useQuery(EDI_ORDER_ITEMS_BY_NUMBER_QUERY , {
+    variables : {ediOrder : "651d2b6fbd737353eb2c50db"}
+  });
+  //console.log("variables" , useQuery.variables.ediOrder)
+  console.log('EDI_ORDER_ITEMS_BY_NUMBER_QUERY data from open' , data)
+
+  if (error) {
+    console.error('EDI_ORDER_ITEMS_BY_NUMBER_QUERY error', error);
+  }
 
    
 

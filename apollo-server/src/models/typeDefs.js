@@ -28,7 +28,7 @@ export const typeDefs = gql`
     books: [Book!]
     ediOrders:[EdiOrder!]
     ediOrderItems:[EdiOrderItem!]
-    ediOrderItemsByNumber:[EdiOrderItem!]
+    ediOrderItemsByNumber(ediOrder: String):[EdiOrderItem!]
     
   }
 
