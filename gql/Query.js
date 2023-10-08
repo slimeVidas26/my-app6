@@ -1,11 +1,16 @@
 import { gql } from "@apollo/client";
 
+ export const HELLO_QUERY = gql`
+ query Query($name: String) {
+     hello(name: $name)
+ }
+`
+
 export  const WAREHOUSES_QUERY = gql`
      query WarehouseQuery {
          warehouses {
             id
-             title
-             
+             title  
          }
      }`
 

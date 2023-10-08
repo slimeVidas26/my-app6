@@ -15,36 +15,16 @@ import { gql } from "@apollo/client";
 
 
 import { useQuery } from "@apollo/client";
-
 import {EDI_ORDER_ITEMS_BY_NUMBER_QUERY } from '../../../../../../gql/Query'
+import { HELLO_QUERY } from '../../../../../../gql/Query';
 
 export const Open = ({route}) => {
 
-  const {data, error, loading} =  useQuery(EDI_ORDER_ITEMS_BY_NUMBER_QUERY);
-  console.log('EDI_ORDER_ITEMS_BY_NUMBER_QUERY data from open' , data)
-
-  if (error) {
-    console.error('EDI_ORDER_ITEMS_BY_NUMBER_QUERY error', error);
-  }
-
-
   
 
-    const HELLO_QUERY = gql`
-    query Query($name: String) {
-    hello(name: $name)
-}
-`
+   
 
-const { data1, loading1, error1 } = useQuery(HELLO_QUERY, {
-  variables: {name: "Jacob"},
-});
 
-console.log('HELLO_QUERY' , data1)
-
-if (error) {
-  console.error('HELLO_QUERY error', error1);
-}
 
 
     // const Stack = createNativeStackNavigator();
