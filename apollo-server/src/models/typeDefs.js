@@ -48,7 +48,7 @@ export const typeDefs = gql`
 }
 
 type EdiOrder {
-  id: ID
+  id: ID!
   orderNumber: String!
   date: Date!
   rows: Int!

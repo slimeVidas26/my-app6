@@ -1,10 +1,10 @@
 import mongoose from 'mongoose';
 
 const Schema = mongoose.Schema
-const ObjectId = Schema.Types.ObjectId;
+// const ObjectId = Schema.Types.ObjectId;
 
 export const EdiOrder = mongoose.model('EdiOrder', { 
-  _id: ObjectId,
+ // _id: ObjectId,
   orderNumber: String,
   date: {type: Date, default: Date.now},
   rows: Number , 
