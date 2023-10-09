@@ -96,7 +96,7 @@ export const  EntryCertificateEDIScreen = () =>{
       
       const searchOrder = async()=>{  
         //reference
-        const getItemByOrderNumber = data.ediOrders.filter(item => 
+        const getItemByOrderNumber = data.ediOrders[0].filter(item => 
               {
                 console.log("dataInSearchOrder" , data)
 

@@ -114,6 +114,27 @@ export const resolvers = {
         orderItems: async () => await OrderItem.find({}),
         ediOrders: async () => await EdiOrder.find({}),
 
+        
+
+        // ediOrders: async () => {
+        //    try {
+        //     const ediOrders = await EdiOrder.find()
+        //     //console.log("ediOrder" , ediOrders);
+        //      return ediOrders.map(ediOrder => ({
+        //        ...ediOrder._doc,
+        //        ediOrderItems: ediOrderItems.bind(this, ediOrder._doc.ediOrderItems),
+        //      }
+
+        //      ),
+        //      console.log("ediOrder" , ediOrders)
+
+        //      )
+        //    } catch (err) {
+        //      throw err
+        //     }
+        // },
+
+
 
         ediOrderItemsByNumber: async (_, {ediOrder}) => await EdiOrderItem.find({ediOrder: ediOrder}),
 
@@ -129,18 +150,6 @@ export const resolvers = {
           }
         },
 
-        // ediOrders: async () => {
-        //   try {
-        //     const ediOrders = await EdiOrder.find()
-
-        //     return ediOrders.map(ediOrder => ({
-        //       ...ediOrder._doc,
-        //       ediOrderItems: ediOrderItems.bind(this, ediOrder._doc.ediOrderItems)
-        //     }))
-        //   } catch (err) {
-        //     throw err
-        //   }
-        // },
 
         books: async () => {
           try {
@@ -166,7 +175,13 @@ export const resolvers = {
           }
         }
       
-    },
+    }
+    ,
+
+
+    
+
+    
 
     Mutation: {
 

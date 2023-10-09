@@ -3,6 +3,7 @@
  //npm install @react-navigation/native-stack
 //npm i expo-localization i18n-js
 
+
 import { ApolloProvider } from '@apollo/client';
 import {client} from './Client';
 import { NativeBaseProvider, Box } from "native-base";
