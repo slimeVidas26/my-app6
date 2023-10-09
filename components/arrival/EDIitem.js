@@ -16,7 +16,7 @@ import { TabRouter, useNavigation , useRoute } from '@react-navigation/native'
       {  
         
             navigation.navigate('MyTabs',{
-              id,
+                id,
                 orderNumber,
                 date , 
                 rows , 
@@ -24,6 +24,7 @@ import { TabRouter, useNavigation , useRoute } from '@react-navigation/native'
                 searchIcon: true,
                 rows } )  }}>
     <View style={styles.item}>
+    <Text style={styles.title}>id : {id}</Text>
       <Text style={styles.title}>orderNumber : {orderNumber}</Text>
        <Text style={styles.title}>Date :{date}</Text>
       <Text style={styles.title}>Rows :{rows}</Text>

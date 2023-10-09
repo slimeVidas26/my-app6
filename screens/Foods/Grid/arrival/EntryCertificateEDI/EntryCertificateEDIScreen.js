@@ -32,10 +32,10 @@ export const  EntryCertificateEDIScreen = () =>{
   } = useContext(EDIContext);
 
   const {data, error, loading} = useQuery(EDI_ORDERS_QUERY);
-  console.log('data' , data)
+  console.log('EDI_ORDERS_QUERY' , data)
 
   if (error) {
-    console.error('EDI_QUERY error', error);
+    console.error('EDI_ORDERS_QUERY error', error);
 }
 
   //console.log('openData' , openData())
@@ -204,7 +204,7 @@ export const  EntryCertificateEDIScreen = () =>{
       // console.log("item" , item)
  
             <EDIitem item={data}
-                   
+                   id = {item.id}
                    orderNumber = {item.orderNumber}
                    date = {item.date}
                    rows={item.rows }
@@ -288,7 +288,7 @@ export const  EntryCertificateEDIScreen = () =>{
                 <FlatList 
                   data={data.ediOrders}
                   renderItem={renderItem}
-                  keyExtractor={item =>item._id}
+                  keyExtractor={(item , index) =>index.toString()}
                   ListEmptyComponent={myListEmpty}
                      />
                 
@@ -305,7 +305,7 @@ export const  EntryCertificateEDIScreen = () =>{
      ordersList && <FlatList 
     data={data.ediOrders}
     renderItem={renderItem}
-    keyExtractor={item => item._id} 
+    keyExtractor={(item , index) =>index.toString()}
     ListEmptyComponent={myListEmpty}
     /> }
       </>
