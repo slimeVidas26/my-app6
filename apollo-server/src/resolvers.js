@@ -130,6 +130,7 @@ export const resolvers = {
         ediOrders: async () => {
           try {
             const ediOrders = await EdiOrder.find()
+
             return ediOrders.map(ediOrder => ({
               ...ediOrder._doc,
               ediOrderItems: ediOrderItems.bind(this, ediOrder._doc.ediOrderItems)

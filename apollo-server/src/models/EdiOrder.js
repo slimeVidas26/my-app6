@@ -1,9 +1,10 @@
 import mongoose from 'mongoose';
 
 const Schema = mongoose.Schema
+const ObjectId = Schema.Types.ObjectId;
 
 export const EdiOrder = mongoose.model('EdiOrder', { 
-  _id: Number ,
+  _id: ObjectId,
   orderNumber: String,
   date: {type: Date, default: Date.now},
   rows: Number , 
@@ -14,5 +15,4 @@ export const EdiOrder = mongoose.model('EdiOrder', {
       }]
      });
 
-     const p = new EdiOrder({ orderNumber: '11111' });
-console.log('pid',p.id);
+     
