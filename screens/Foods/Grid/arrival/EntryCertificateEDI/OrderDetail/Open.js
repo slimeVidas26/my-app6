@@ -92,7 +92,7 @@ export const Open = ({route}) => {
     // }
 
     return(
-      <View><Text>{data.ediOrderItemsByNumber[0].code}</Text></View>
+      <View style={styles.container}><Text style={styles.text}>{data.ediOrderItemsByNumber[0].code}</Text></View>
     )
 
 //   return (
@@ -138,6 +138,25 @@ export const Open = ({route}) => {
 
 //   )
 }
+
+const styles = StyleSheet.create({
+   
+    container: {
+      flex: 1,
+      //backgroundColor: "#7CA1B4",
+      alignItems: "center",
+      justifyContent: "center",
+    },
+   
+    text: {
+      color: "blue",
+      fontSize: 25,
+      fontWeight: "bold",
+      
+    },
+   
+   
+  });
 
 
 
