@@ -78,6 +78,9 @@ const dateScalar = new GraphQLScalarType({
     }
   }
 
+  //console.log('ediOrder from helper' , ediOrder("651d2b6fbd737353eb2c50db"))
+
+
   const author = async authorId => {
     try {
       const author = await Author.findById(authorId)
@@ -116,23 +119,23 @@ export const resolvers = {
 
         
 
-        // ediOrders: async () => {
-        //    try {
-        //     const ediOrders = await EdiOrder.find()
-        //     //console.log("ediOrder" , ediOrders);
-        //      return ediOrders.map(ediOrder => ({
-        //        ...ediOrder._doc,
-        //        ediOrderItems: ediOrderItems.bind(this, ediOrder._doc.ediOrderItems),
+        //  ediOrders: async () => {
+        //     try {
+        //      const ediOrders = await EdiOrder.find()
+        //      console.log("ediOrder1" , ediOrders);
+        //       return ediOrders.map(ediOrder => ({
+        //         ...ediOrder._doc,
+        //         ediOrderItems: ediOrderItems.bind(this, ediOrder._doc.ediOrderItems),
+        //       }
+
+        //       ),
+        //       console.log("ediOrder2" , ediOrders)
+
+        //       )
+        //     } catch (err) {
+        //       throw err
         //      }
-
-        //      ),
-        //      console.log("ediOrder" , ediOrders)
-
-        //      )
-        //    } catch (err) {
-        //      throw err
-        //     }
-        // },
+        //  },
 
 
 

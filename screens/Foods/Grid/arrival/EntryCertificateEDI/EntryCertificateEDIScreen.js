@@ -203,7 +203,7 @@ export const  EntryCertificateEDIScreen = () =>{
      const renderItem = ({ item}) => (
       // console.log("item" , item)
  
-            <EDIitem item={data}
+            <EDIitem item={data.ediOrders}
                    id = {item.id}
                    orderNumber = {item.orderNumber}
                    date = {item.date}
