@@ -104,7 +104,7 @@ function MyTabs({route , navigation}) {
           headerLeft: () => {
            
           
-            let button = !rows ? (
+            let button = 0 ? (
              <View style={{
            flexDirection: "row",
            padding: 1,
@@ -191,8 +191,8 @@ function MyTabs({route , navigation}) {
           tabBarInactiveTintColor: 'gray',
         })}>
       <topTab.Screen name="Open" component={Open} initialParams={{item: route.params.item }} />
-      <topTab.Screen name="Closed" component={Closed} initialParams={{item: route.params.item }} />
-      <topTab.Screen name="All" component={All} initialParams={{item: route.params.item   }} />
+      {/* <topTab.Screen name="Closed" component={Closed} initialParams={{item: route.params.item }} /> */}
+      {/* <topTab.Screen name="All" component={All} initialParams={{item: route.params.item   }} /> */}
 
     </topTab.Navigator>
   );

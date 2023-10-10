@@ -6,7 +6,7 @@ import {FormEDIScreen} from './FormEDIScreen';
 import {SignFormScreen} from './SignFormScreen';
 import {ChooseRedStampReasonScreen} from './ChooseRedStampReasonScreen';
 import { Ionicons } from '@expo/vector-icons';
-import {View , StyleSheet} from 'react-native';
+import {View ,Text, StyleSheet} from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 //import  data  from "../../../../../../data/Datas";
 import { DocumentReview } from '../../DocumentReview';
@@ -90,6 +90,10 @@ export const Open = ({route}) => {
     // setData,
     // setClosedData
     // }
+
+    return(
+      <View><Text>{data.ediOrderItemsByNumber[0].code}</Text></View>
+    )
 
 //   return (
     
