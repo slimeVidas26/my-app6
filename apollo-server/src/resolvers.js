@@ -66,18 +66,21 @@ const dateScalar = new GraphQLScalarType({
       throw err
     }
   }
-  const ediOrder = async ediOrderId => {
-    try {
-      const ediOrder = await EdiOrder.findById(ediOrderId)
-      return {
-        ...ediOrder._doc,
-        ediOrderItems: ediOrderItems.bind(this, ediOrder._doc.ediOrderItems)
-      }
-    } catch (err) {
-      throw err
-    }
-  }
+  // const ediOrder = async ediOrderId => {
+  //   try {    
+  //     const ediOrder = await EdiOrder.findById(ediOrderId)
 
+  //     return {
+        
+  //       ...ediOrder._doc,
+  //       ediOrderItems: ediOrderItems.bind(this, ediOrder._doc.ediOrderItems)
+  //     }
+  //   } catch (err) {
+  //     throw err
+
+  //   }
+    
+  // }
   //console.log('ediOrder from helper' , ediOrder("651d2b6fbd737353eb2c50db"))
 
 
@@ -119,23 +122,23 @@ export const resolvers = {
 
         
 
-        //  ediOrders: async () => {
-        //     try {
-        //      const ediOrders = await EdiOrder.find()
-        //      console.log("ediOrder1" , ediOrders);
-        //       return ediOrders.map(ediOrder => ({
-        //         ...ediOrder._doc,
-        //         ediOrderItems: ediOrderItems.bind(this, ediOrder._doc.ediOrderItems),
-        //       }
+          //  ediOrders: async () => {
+          //     try {
+          //      const ediOrders = await EdiOrder.find()
+          //      console.log("ediOrder1" , ediOrders);
+          //       return ediOrders.map(ediOrder => ({
+          //         ...ediOrder._doc,
+          //         ediOrderItems: ediOrderItems.bind(this, ediOrder._doc.ediOrderItems),
+          //       },
+          //       console.log("ediOrder2" , ediOrders)
 
-        //       ),
-        //       console.log("ediOrder2" , ediOrders)
+          //       ),
 
-        //       )
-        //     } catch (err) {
-        //       throw err
-        //      }
-        //  },
+          //       )
+          //     } catch (err) {
+          //       throw err
+          //      }
+          //  },
 
 
 
