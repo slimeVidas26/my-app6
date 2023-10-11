@@ -24,11 +24,13 @@ export const Open = ({route}) => {
 //   variables: {name: "Jacob"},
 // });
 
+console.log('route.params' ,route.params.id )
+
   const {data, error, loading} =  useQuery(EDI_ORDER_ITEMS_BY_NUMBER_QUERY , {
-    variables : {ediOrder : "651d2b6fbd737353eb2c50db"}
+    variables : {ediOrder : route.params.id}
   });
   //console.log("variables" , useQuery.variables.ediOrder)
-  console.log('EDI_ORDER_ITEMS_BY_NUMBER_QUERY data from open' , data)
+  console.log( data.ediOrderItemsByNumber[0].code)
 
   if (error) {
     console.error('EDI_ORDER_ITEMS_BY_NUMBER_QUERY error', error);
@@ -92,7 +94,7 @@ export const Open = ({route}) => {
     // }
 
     return(
-      <View style={styles.container}><Text style={styles.text}>{data.ediOrderItemsByNumber[0].code}</Text></View>
+      <View style={styles.container}><Text style={styles.text}>{888888}</Text></View>
     )
 
 //   return (
