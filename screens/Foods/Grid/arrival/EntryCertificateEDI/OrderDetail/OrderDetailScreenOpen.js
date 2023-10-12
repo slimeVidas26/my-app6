@@ -11,11 +11,11 @@ import { AntDesign ,  Ionicons } from '@expo/vector-icons';
 export const  OrderDetailScreenOpen= ({route})=> {
 
 
-  const context = useContext(EDIContext)
-  const {data , ref , searchIcon , initialRows,setClosedData , openTab , openData} = context
+  //const context = useContext(EDIContext)
+  //const {data , ref , searchIcon , initialRows,setClosedData , openTab , openData} = context
 
 //console.log('openData from OrderDetailScreenOpen' , openData())
-const arr =  openData().filter((item )=>item.reference === ref);
+//const arr =  openData().filter((item )=>item.reference === ref);
 
 //console.log('arr from OrderDetailScreenOpen' , arr)
 
@@ -37,7 +37,9 @@ const arr =  openData().filter((item )=>item.reference === ref);
   // }
 
   
-const remindRows = openTab.length;
+///const remindRows = openTab.length;
+const remindRows = 10;
+
 //console.log('rowsFromOrderDetailScreenOpen' , remindRows)
 
 

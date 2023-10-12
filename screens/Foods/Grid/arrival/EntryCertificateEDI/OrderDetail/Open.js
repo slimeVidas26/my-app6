@@ -26,13 +26,16 @@ export const Open = ({route}) => {
 
 console.log('route.params' ,route.params.id )
 
+
   const {data, error, loading} =  useQuery(EDI_ORDER_ITEMS_BY_NUMBER_QUERY , {
     variables : {ediOrder : route.params.id}
   });
   //console.log("variables" , useQuery.variables.ediOrder)
-  console.log( data.ediOrderItemsByNumber.map((item)=>{
-  return item.code
-  }))
+  console.log('DATA' , data)
+  
+  // console.log( data.ediOrderItemsByNumber.map((item)=>{
+  // return item.code
+  // }))
 
   if (error) {
     console.error('EDI_ORDER_ITEMS_BY_NUMBER_QUERY error', error);
@@ -43,7 +46,7 @@ console.log('route.params' ,route.params.id )
 
 
 
-    // const Stack = createNativeStackNavigator();
+     const Stack = createNativeStackNavigator();
 
     // const ref = route.params.orderNumber;
     // const searchIcon = route.params.searchIcon;
@@ -70,7 +73,7 @@ console.log('route.params' ,route.params.id )
     
     //console.log('openState' , openState)
 
-  const store = {...OrderInfoState() , ref , searchIcon , initialRows , openTab }
+  ///const store = {...OrderInfoState() , ref , searchIcon , initialRows , openTab }
   //console.log('store' , store)
     //EDIContext
 //  const [orderInfo, setOrderInfo] = useState({
@@ -99,48 +102,48 @@ console.log('route.params' ,route.params.id )
     //   <View style={styles.container}><Text style={styles.text}>{888888}</Text></View>
     // )
 
-   return (
+//    return (
     
- <EDIContext.Provider value={store}>
- <Stack.Navigator >
+//  ///<EDIContext.Provider value={store}>
+//  <Stack.Navigator >
 
-   <Stack.Group
-   screenOptions={({route , navigation}) => ({
-    headerShown:true,
-    headerTitleAlign: 'center',
-    headerStyle: {
-         backgroundColor: '#2F95D6',
-         borderBottomColor: '#fff',
-         borderBottomWidth: 3,
-       },
-       headerTintColor: '#fff',
-        headerTitleStyle: {
-         fontSize: 18,
-       },
+//    <Stack.Group
+//    screenOptions={({route , navigation}) => ({
+//     headerShown:true,
+//     headerTitleAlign: 'center',
+//     headerStyle: {
+//          backgroundColor: '#2F95D6',
+//          borderBottomColor: '#fff',
+//          borderBottomWidth: 3,
+//        },
+//        headerTintColor: '#fff',
+//         headerTitleStyle: {
+//          fontSize: 18,
+//        },
      
-            headerLeft:()=>  <View style={{
-         flexDirection: "row",
-         padding: 1,
-         justifyContent: "space-between",
-         alignItems: "center" ,
-         }}>
+//             headerLeft:()=>  <View style={{
+//          flexDirection: "row",
+//          padding: 1,
+//          justifyContent: "space-between",
+//          alignItems: "center" ,
+//          }}>
      
-         <Ionicons  name="close-circle-outline" size={30} color="#fff"
-         onPress={()=>navigation.goBack()} />
-       </View>
-   })}
-   >
-   <Stack.Screen   name="OrderDetailScreenOpen" component={OrderDetailScreenOpen}/>
-   <Stack.Screen  name="FormEDIScreen" component={FormEDIScreen} />
-   <Stack.Screen   name="SignFormScreen" component={SignFormScreen} />
-   <Stack.Screen   name="ChooseRedStampReasonScreen" component={ChooseRedStampReasonScreen} />
+//          <Ionicons  name="close-circle-outline" size={30} color="#fff"
+//          onPress={()=>navigation.goBack()} />
+//        </View>
+//    })}
+//    >
+//    <Stack.Screen   name="OrderDetailScreenOpen" component={OrderDetailScreenOpen}/>
+//    <Stack.Screen  name="FormEDIScreen" component={FormEDIScreen} />
+//    <Stack.Screen   name="SignFormScreen" component={SignFormScreen} />
+//    <Stack.Screen   name="ChooseRedStampReasonScreen" component={ChooseRedStampReasonScreen} />
 
 
-   </Stack.Group>
- </Stack.Navigator>
- </EDIContext.Provider>
+//    </Stack.Group>
+//  </Stack.Navigator>
+//  ///</EDIContext.Provider>
 
-   )
+//    )
 }
 
 const styles = StyleSheet.create({

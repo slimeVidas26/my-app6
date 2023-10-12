@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import {Text , View , StyleSheet } from 'react-native'
 
-import { gql } from "@apollo/client";
-import { useQuery } from "@apollo/client";
+
 
 
 
@@ -11,6 +10,8 @@ import data from '../../../../../../data/Datas'
 
 
 const OrderInfoState = () => {
+
+   
 
     
 
@@ -50,14 +51,6 @@ const OrderInfoState = () => {
            openData
            
           }
-    
-  
-  
-   
-
-  
-  
-  
   };
 
  

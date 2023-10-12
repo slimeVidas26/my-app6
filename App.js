@@ -305,6 +305,7 @@ function App() {
 
 <Stack.Screen name="Stock" component={StockScreen} options = {{title:i18n.t("Stock")}} />
 <Stack.Screen name="Form" component={FormScreen}   options={({ route }) => ({ title: route.params.titre , reference:route.params.reference })} />
+
 <Stack.Screen name="MyTabs" component={MyTabs}
    options={({ route }) => ({ headerStyle: {
         backgroundColor: '#2F95D6',
