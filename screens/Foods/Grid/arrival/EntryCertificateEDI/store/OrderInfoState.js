@@ -11,9 +11,6 @@ import data from '../../../../../../data/Datas'
 
 const OrderInfoState = () => {
 
-   
-
-    
 
     const [OrderInfo, setOrderInfo] = useState({
         data : data , 
