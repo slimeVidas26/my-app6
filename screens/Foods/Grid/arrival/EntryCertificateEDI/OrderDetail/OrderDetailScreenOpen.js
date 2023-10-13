@@ -214,7 +214,9 @@ const renderItem = ({item }) => (
                 onSubmitEditing={handleClick } />
 
                 <View style = {styles.counter}>
-                  <Text>{remindRows} Remind / {initialRows} rows </Text>
+                  {/* <Text>{remindRows} Remind / {initialRows} rows </Text> */}
+                  <Text>{45} Remind / {55} rows </Text>
+
                   </View>
 
                   <View style = {styles.status}>
