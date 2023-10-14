@@ -11,8 +11,8 @@ import { AntDesign ,  Ionicons } from '@expo/vector-icons';
 export const  OrderDetailScreenOpen= ({route})=> {
 
 
-  //const context = useContext(EDIContext)
-  //const {data , ref , searchIcon , initialRows,setClosedData , openTab , openData} = context
+  const context = useContext(EDIContext)
+  const { ref , searchIcon , initialRows,setClosedData , openTab , openData} = context
 
 //console.log('openData from OrderDetailScreenOpen' , openData())
 //const arr =  openData().filter((item )=>item.reference === ref);
@@ -36,9 +36,7 @@ export const  OrderDetailScreenOpen= ({route})=> {
 
   // }
 
-  
-///const remindRows = openTab.length;
-const remindRows = 10;
+  //const remindRows = openTab.length;
 
 //console.log('rowsFromOrderDetailScreenOpen' , remindRows)
 
@@ -144,18 +142,20 @@ const getItemOrder = async()=>{
 
 const renderItem = ({item }) => (  
      <OrderDetailItem 
-                    clearInput = {clearInput}
+
+     code = {item.code}
+                    /* clearInput = {clearInput}
                     rows = {remindRows}
                     nextHeaderIcon = {nextHeaderIcon}
-                    item={item}
-                    code = {item.code}
-                    name = {item.product_name}
+                    item={item} */
+                    
+                    /* name = {item.product_name}
                     quantity={item.quantity} 
                     boxes={item.boxes }
                     isOpen={item.isOpen }
                     supplied={item.supplied }
                     ReasonOfRefund = {item.ReasonOfRefund}
-                    isFull={item.isFull }
+                    isFull={item.isFull } */
                      /> 
    );
 
@@ -170,7 +170,8 @@ const renderItem = ({item }) => (
          
            headerLeft: () => {
 
-         let button = !remindRows ? (
+        //  let button = !remindRows ? (
+          let button = 0 ? (
           <View style={{
         flexDirection: "row",
         padding: 1,
@@ -197,7 +198,9 @@ const renderItem = ({item }) => (
     return (
       <View style={{ alignItems: "center" }}>
       <Text style={styles.item}>No data found</Text>
-      <Text style={styles.item}>rows : {remindRows}</Text>
+      {/* <Text style={styles.item}>rows : {remindRows}</Text> */}
+      <Text style={styles.item}>rows : {5}</Text>
+
 
       </View>
     )}

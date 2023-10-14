@@ -15,13 +15,13 @@ import { TabRouter, useNavigation , useRoute } from '@react-navigation/native'
         item }) }} >
     <View style={{...styles.label(isOpen) , ...styles.label(isFull) }}>
       <Text  style={styles.title}>Code : {item.code}</Text>
-      <Text style={styles.title}>Name : {item.name}</Text>
+      {/* <Text style={styles.title}>Name : {item.name}</Text>
       <Text style={styles.title}>Quantity :{item.quantity}</Text>
       <Text style={styles.title}>Boxes :{item.boxes}</Text>
       <Text style={styles.title}>isOpen :{item.isOpen}</Text>
       <Text style={styles.title}>Supplied :{item.supplied}</Text>
       <Text style={styles.title}>ReasonOfRefund :{item.ReasonOfRefund}</Text>
-      <Text style={styles.title}>isFull :{item.isFull}</Text>
+      <Text style={styles.title}>isFull :{item.isFull}</Text> */}
     </View>
     </TouchableOpacity>
   )

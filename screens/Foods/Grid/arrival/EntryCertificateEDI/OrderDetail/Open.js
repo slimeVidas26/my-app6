@@ -1,6 +1,6 @@
 import React , {useState} from 'react';
 import { TabRouter, useNavigation , useRoute } from '@react-navigation/native'
-
+import OrderInfoState from  "../store/OrderInfoState"
 import EDIContext from '../store/EDIContext';
 import {OrderDetailScreenOpen} from './OrderDetailScreenOpen';
 import {FormEDIScreen} from './FormEDIScreen'; 
@@ -14,58 +14,25 @@ import { useQuery } from "@apollo/client";
 import {EDI_ORDER_ITEMS_BY_NUMBER_QUERY } from '../../../../../../gql/Query'
 import { HELLO_QUERY } from '../../../../../../gql/Query';
 
-const OrderInfoState = () => {
 
-    const navigation = useNavigation()
-   const route = useRoute()
-
-  const {data, error, loading} =  useQuery(EDI_ORDER_ITEMS_BY_NUMBER_QUERY , {
-    variables : {ediOrder : route.params.id}
-  });
-  console.log('DATA' , data)
-
-  if (error) {
-    console.error('EDI_ORDER_ITEMS_BY_NUMBER_QUERY error', error);
-  }
-
-
-  const [OrderInfo, setOrderInfo] = useState({
-      data : data , 
-      //closedData : data.filter((item)=>item.isOpen===false),
-
-      inputPlaceholder :'Search Order',
-      message : '',  
-  })
-
-  //console.log('OrderInfo' , OrderInfo)
-
-       function setData(updateData) {
-          const newState = { ...OrderInfo, updateData };
-          setOrderInfo(newState);
-           }
-
-      //const  openData = () =>data.filter((item)=>item.isOpen===true)
-       
-      //const  closedData = () =>data.filter((item)=>item.isOpen===false)
-
-          
-
-      return {
-          data : OrderInfo.data,
-         //closedData,
-         inputPlaceholder:OrderInfo.inputPlaceholder,
-         message:OrderInfo.message,
-         setData,
-         //openData
-         
-        }
-};
 
 
 export const Open = ({route}) => {
 
-  console.log('OrderInfoState()', OrderInfoState().data.ediOrderItemsByNumber[0].code)
+ // console.log('OrderInfoState()', OrderInfoState().data.ediOrderItemsByNumber[0].code)
+ const {data, error, loading} =  useQuery(EDI_ORDER_ITEMS_BY_NUMBER_QUERY , {
+  variables : {ediOrder : route.params.id}
+});
+console.log('DATA' , data)
 
+if (error) {
+  console.error('EDI_ORDER_ITEMS_BY_NUMBER_QUERY error', error);
+}
+
+const store = {...OrderInfoState() ,data ,  ref , searchIcon , initialRows , 
+  //openTab 
+}
+ console.log('store' , store)
  
 
   // const { data, loading, error } = useQuery(HELLO_QUERY, {
@@ -82,8 +49,8 @@ console.log('route.params' ,route.params.id )
 
      const ref = route.params.orderNumber;
      const searchIcon = route.params.searchIcon;
-    //const initialRows = route.params.item.order_details.length;
-    const initialRows = 12;
+     const initialRows = store.data.ediOrderItemsByNumber.length;
+
 
 
     //const openState = OrderInfoState();
@@ -99,8 +66,7 @@ console.log('route.params' ,route.params.id )
 
     //console.log('openState' , openState)
 
-  // const store = {...OrderInfoState() , ref , searchIcon , initialRows , openTab }
-  // console.log('store' , store)
+   
 
 
     //EDIContext
@@ -132,7 +98,7 @@ console.log('route.params' ,route.params.id )
 
    return (
     
- ///<EDIContext.Provider value={store}>
+ <EDIContext.Provider value={store}>
  <Stack.Navigator >
 
    <Stack.Group
@@ -169,7 +135,7 @@ console.log('route.params' ,route.params.id )
 
    </Stack.Group>
  </Stack.Navigator>
- ///</EDIContext.Provider>
+ </EDIContext.Provider>
 
    )
 }
