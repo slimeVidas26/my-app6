@@ -4,6 +4,12 @@ import {Text , TextInput , View ,ActivityIndicator ,   SafeAreaView , StyleSheet
 import  EDIContext  from '../store/EDIContext';
 import { OrderDetailItem } from '../../../../../../components/arrival/OrderDetailItem';
 import { AntDesign ,  Ionicons } from '@expo/vector-icons';
+import OrderInfoState from  "../store/OrderInfoState"
+import { useQuery } from "@apollo/client";
+import {EDI_ORDER_ITEMS_BY_NUMBER_QUERY } from '../../../../../../gql/Query'
+
+
+
 
 
 
@@ -12,7 +18,7 @@ export const  OrderDetailScreenOpen= ({route})=> {
 
 
   const context = useContext(EDIContext)
-  const { ref , searchIcon ,code ,  initialRows,setClosedData , openTab , openData} = context
+  const { ref , searchIcon ,code ,  initialRows,setClosedData  , openData} = context
 //console.log('openData from OrderDetailScreenOpen' , openData())
 //const arr =  openData().filter((item )=>item.reference === ref);
 
@@ -22,7 +28,25 @@ export const  OrderDetailScreenOpen= ({route})=> {
   // .filter((order)=>order.isOpen === 'true')).flat()
 //console.log(' openTab', openTab )
 
+const {data, error, loading} =  useQuery(EDI_ORDER_ITEMS_BY_NUMBER_QUERY , {
+  variables : {ediOrder : "651d2b6fbd737353eb2c50db"}
+});
+console.log('DATA' , data)
 
+if (error) {
+  console.error('EDI_ORDER_ITEMS_BY_NUMBER_QUERY error', error);
+}
+
+const store = {...OrderInfoState() ,data ,code ,   ref , searchIcon , initialRows , 
+  openTab 
+}
+
+const storeDataEdiOrderItemsByNumber = store.data.ediOrderItemsByNumber ;
+
+
+const openTab = storeDataEdiOrderItemsByNumber.filter((item )=>item.orderNumber=== ref)
+      //.map((item)=>  item
+      .filter((order)=>order.product === "shampoo").flat()
 
 
    
@@ -54,7 +78,7 @@ export const  OrderDetailScreenOpen= ({route})=> {
    const [showIcon, setShowIcon] = useState(false);
    const [nextHeaderIcon, setNextHeaderIcon] = useState(false);
 
-   const [loading, setLoading] = useState(false);
+   //const [loading, setLoading] = useState(false);
    const [shouldShow, setShouldShow] = useState(true);
    const [message, setMessage] = useState('');
    const [item , setItem] = useState(null);

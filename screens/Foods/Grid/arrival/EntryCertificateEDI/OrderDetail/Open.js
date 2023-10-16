@@ -34,12 +34,13 @@ const store = {...OrderInfoState() ,data ,code ,   ref , searchIcon , initialRow
 }
 
 const storeDataEdiOrderItemsByNumber = store.data.ediOrderItemsByNumber ;
+
 // const openTab = storeDataEdiOrderItemsByNumber.filter((item )=>item.orderNumber=== ref).map((item)=>  item
 //      .filter((order)=>order.product === "shampoo")).flat()
 
      const openTab = storeDataEdiOrderItemsByNumber.filter((item )=>item.orderNumber=== ref)
-      .map((item)=>  item
-      .filter((order)=>order.product === "shampoo")).flat()
+      //.map((item)=>  item
+      .filter((order)=>order.product === "shampoo").flat()
 
 console.log("openTab" , openTab)
 
