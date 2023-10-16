@@ -29,16 +29,29 @@ if (error) {
   console.error('EDI_ORDER_ITEMS_BY_NUMBER_QUERY error', error);
 }
 
-const store = {...OrderInfoState() ,data ,  ref , searchIcon , initialRows , 
-  //openTab 
+const store = {...OrderInfoState() ,data ,code ,   ref , searchIcon , initialRows , 
+  openTab 
 }
- console.log('store' , store)
- 
+
+const storeDataEdiOrderItemsByNumber = store.data.ediOrderItemsByNumber ;
+// const openTab = storeDataEdiOrderItemsByNumber.filter((item )=>item.orderNumber=== ref).map((item)=>  item
+//      .filter((order)=>order.product === "shampoo")).flat()
+
+     const openTab = storeDataEdiOrderItemsByNumber.filter((item )=>item.orderNumber=== ref)
+      .map((item)=>  item
+      .filter((order)=>order.product === "shampoo")).flat()
+
+console.log("openTab" , openTab)
+
+const code = store.data.ediOrderItemsByNumber[0].code
+
+
+ console.log('storeData' , store.data.ediOrderItemsByNumber[0].code)
 
   // const { data, loading, error } = useQuery(HELLO_QUERY, {
 //   variables: {name: "Jacob"},
 // });
-
+console.log('routeParams' , route.params)
 console.log('route.params' ,route.params.id )
 
 
@@ -49,7 +62,9 @@ console.log('route.params' ,route.params.id )
 
      const ref = route.params.orderNumber;
      const searchIcon = route.params.searchIcon;
-     const initialRows = store.data.ediOrderItemsByNumber.length;
+     //const initialRows = store.data.ediOrderItemsByNumber.length;
+      const initialRows = 4;
+
 
 
 
@@ -58,8 +73,7 @@ console.log('route.params' ,route.params.id )
     //const openStateData = openState.data;
     //console.log('openStateData' , openStateData)
 
-/// const openTab = data.filter((item )=>item.reference=== ref).map((item)=>  item.order_details
-    // .filter((order)=>order.isOpen === 'true')).flat()
+ 
 
   
     //const closedData = data.filter((item )=>item.reference=== route.params.item.reference)

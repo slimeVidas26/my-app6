@@ -2,7 +2,7 @@ import React from 'react'
 import {View , Text , StyleSheet , TouchableOpacity} from 'react-native';
 import { TabRouter, useNavigation , useRoute } from '@react-navigation/native'
 
- export const OrderDetailItem = ({ item , isOpen,isFull , clearInput , rows }) => 
+ export const OrderDetailItem = ({ code , item , isOpen,isFull , clearInput , rows }) => 
  {
   const navigation = useNavigation()
  
@@ -12,9 +12,11 @@ import { TabRouter, useNavigation , useRoute } from '@react-navigation/native'
     {  //console.log('ITEM' , item)
       clearInput();
       navigation.navigate('FormEDIScreen' , {       
-        item }) }} >
+        code }) }} >
     <View style={{...styles.label(isOpen) , ...styles.label(isFull) }}>
-      <Text  style={styles.title}>Code : {item.code}</Text>
+      <Text  style={styles.title}>Code : {code}</Text>
+      <Text  style={styles.title}>Code : {5555}</Text>
+
       {/* <Text style={styles.title}>Name : {item.name}</Text>
       <Text style={styles.title}>Quantity :{item.quantity}</Text>
       <Text style={styles.title}>Boxes :{item.boxes}</Text>

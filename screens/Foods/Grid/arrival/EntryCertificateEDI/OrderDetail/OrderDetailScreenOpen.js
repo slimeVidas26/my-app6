@@ -12,8 +12,7 @@ export const  OrderDetailScreenOpen= ({route})=> {
 
 
   const context = useContext(EDIContext)
-  const { ref , searchIcon , initialRows,setClosedData , openTab , openData} = context
-
+  const { ref , searchIcon ,code ,  initialRows,setClosedData , openTab , openData} = context
 //console.log('openData from OrderDetailScreenOpen' , openData())
 //const arr =  openData().filter((item )=>item.reference === ref);
 
@@ -143,7 +142,7 @@ const getItemOrder = async()=>{
 const renderItem = ({item }) => (  
      <OrderDetailItem 
 
-     code = {item.code}
+                   code = {item.code}
                     /* clearInput = {clearInput}
                     rows = {remindRows}
                     nextHeaderIcon = {nextHeaderIcon}
@@ -197,7 +196,7 @@ const renderItem = ({item }) => (
 
     return (
       <View style={{ alignItems: "center" }}>
-      <Text style={styles.item}>No data found</Text>
+      <Text style={styles.item}>No data found here</Text>
       {/* <Text style={styles.item}>rows : {remindRows}</Text> */}
       <Text style={styles.item}>rows : {5}</Text>
 
