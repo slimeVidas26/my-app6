@@ -20,34 +20,34 @@ import { HELLO_QUERY } from '../../../../../../gql/Query';
 export const Open = ({route}) => {
 
  // console.log('OrderInfoState()', OrderInfoState().data.ediOrderItemsByNumber[0].code)
- const {data, error, loading} =  useQuery(EDI_ORDER_ITEMS_BY_NUMBER_QUERY , {
-  variables : {ediOrder : route.params.id}
-});
-console.log('DATA' , data)
+//  const {data, error, loading} =  useQuery(EDI_ORDER_ITEMS_BY_NUMBER_QUERY , {
+//   variables : {ediOrder : route.params.id}
+// });
+// console.log('DATA' , data)
 
-if (error) {
-  console.error('EDI_ORDER_ITEMS_BY_NUMBER_QUERY error', error);
+// if (error) {
+//   console.error('EDI_ORDER_ITEMS_BY_NUMBER_QUERY error', error);
+// }
+
+const store = {...OrderInfoState()   ,   ref , searchIcon , initialRows , 
+  //openTab 
 }
 
-const store = {...OrderInfoState() ,data ,code ,   ref , searchIcon , initialRows , 
-  openTab 
-}
-
-const storeDataEdiOrderItemsByNumber = store.data.ediOrderItemsByNumber ;
+// const storeDataEdiOrderItemsByNumber = store.data.ediOrderItemsByNumber ;
 
 // const openTab = storeDataEdiOrderItemsByNumber.filter((item )=>item.orderNumber=== ref).map((item)=>  item
 //      .filter((order)=>order.product === "shampoo")).flat()
 
-     const openTab = storeDataEdiOrderItemsByNumber.filter((item )=>item.orderNumber=== ref)
-      //.map((item)=>  item
-      .filter((order)=>order.product === "shampoo").flat()
+//      const openTab = storeDataEdiOrderItemsByNumber.filter((item )=>item.orderNumber=== ref)
+//       //.map((item)=>  item
+//       .filter((order)=>order.product === "shampoo").flat()
 
-console.log("openTab" , openTab)
+// console.log("openTab" , openTab)
 
-const code = store.data.ediOrderItemsByNumber[0].code
+//const code = store.data.ediOrderItemsByNumber[0].code
 
 
- console.log('storeData' , store.data.ediOrderItemsByNumber[0].code)
+ //console.log('storeData' , store.data.ediOrderItemsByNumber[0].code)
 
   // const { data, loading, error } = useQuery(HELLO_QUERY, {
 //   variables: {name: "Jacob"},
