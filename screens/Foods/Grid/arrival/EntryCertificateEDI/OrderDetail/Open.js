@@ -29,17 +29,18 @@ if (error) {
   console.error('EDI_ORDER_ITEMS_BY_NUMBER_QUERY error', error);
 }
 
-const store = {...OrderInfoState() ,data ,  ref , searchIcon , initialRows , 
-  //openTab 
-}
- console.log('store' , store)
+// const store = {...OrderInfoState() ,data ,  ref , searchIcon , initialRows , 
+//   //openTab 
+// }
+//  console.log('store' , store)
  
 
   // const { data, loading, error } = useQuery(HELLO_QUERY, {
 //   variables: {name: "Jacob"},
 // });
 
-console.log('route.params' ,route.params.id )
+console.log('route.params.id' ,route.params.id )
+console.log('route.params.orderNumber' ,route.params )
 
 
   
@@ -49,7 +50,7 @@ console.log('route.params' ,route.params.id )
 
      const ref = route.params.orderNumber;
      const searchIcon = route.params.searchIcon;
-     const initialRows = store.data.ediOrderItemsByNumber.length;
+     //const initialRows = store.data.ediOrderItemsByNumber.length;
 
 
 
@@ -98,7 +99,6 @@ console.log('route.params' ,route.params.id )
 
    return (
     
- <EDIContext.Provider value={store}>
  <Stack.Navigator >
 
    <Stack.Group
@@ -135,7 +135,6 @@ console.log('route.params' ,route.params.id )
 
    </Stack.Group>
  </Stack.Navigator>
- </EDIContext.Provider>
 
    )
 }

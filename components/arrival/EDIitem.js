@@ -22,7 +22,7 @@ import { TabRouter, useNavigation , useRoute } from '@react-navigation/native'
                 rows , 
                 quantity,
                 searchIcon: true,
-                rows } )  }}>
+                 } )  }}>
     <View style={styles.item}>
     <Text style={styles.title}>id : {id}</Text>
       <Text style={styles.title}>orderNumber : {orderNumber}</Text>

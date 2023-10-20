@@ -190,7 +190,9 @@ function MyTabs({route , navigation}) {
           tabBarActiveTintColor: 'tomato',
           tabBarInactiveTintColor: 'gray',
         })}>
-      <topTab.Screen name="Open" component={Open} initialParams={{id: route.params.id}} />
+      <topTab.Screen name="Open" component={Open} initialParams={{id: route.params.id ,
+       orderNumber:route.params.orderNumber
+        , date:route.params.date , rows:route.params.rows , quantity:route.params.quantity}} />
       {/* <topTab.Screen name="Closed" component={Closed} initialParams={{item: route.params.item }} /> */}
       {/* <topTab.Screen name="All" component={All} initialParams={{item: route.params.item   }} /> */}
 
