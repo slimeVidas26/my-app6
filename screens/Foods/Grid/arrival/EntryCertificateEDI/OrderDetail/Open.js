@@ -1,4 +1,4 @@
-import React , {useState} from 'react';
+import React , {useState , useEffect} from 'react';
 import { TabRouter, useNavigation , useRoute } from '@react-navigation/native'
 import OrderInfoState from  "../store/OrderInfoState"
 import EDIContext from '../store/EDIContext';
@@ -30,9 +30,16 @@ if (error) {
   console.error('EDI_ORDER_ITEMS_BY_NUMBER_QUERY error', error);
 }
 
+
+
+
  const openTab = data.ediOrderItemsByNumber.filter((item )=>item.product=== "shampoo")
  //.map((item)=>  item.order_details
      //.filter((order)=>order.isOpen === 'true')).flat()
+
+  //    useEffect(() => {
+  //     openTab();
+  // }, []);
 
  const store = {...OrderInfoState() ,
   data ,
