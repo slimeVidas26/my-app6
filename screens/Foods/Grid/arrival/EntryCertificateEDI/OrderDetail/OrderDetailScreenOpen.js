@@ -43,18 +43,10 @@ export const  OrderDetailScreenOpen= ({route})=> {
 
   
    const [ordersList, setOrdersList] = useState(true);
-   
-
-
-
-
-
-   
    const [placeholder, setPlaceholder] = useState('route.params.titre' );
    const [number , onChangeNumber] = useState('');
    const [showIcon, setShowIcon] = useState(false);
    const [nextHeaderIcon, setNextHeaderIcon] = useState(false);
-
    const [loading, setLoading] = useState(false);
    const [shouldShow, setShouldShow] = useState(true);
    const [message, setMessage] = useState('');
@@ -144,6 +136,8 @@ const renderItem = ({item }) => (
      <OrderDetailItem 
 
      code = {item.code}
+     product = {item.product}
+     quantity = {item.quantity}
                     /* clearInput = {clearInput}
                     rows = {remindRows}
                     nextHeaderIcon = {nextHeaderIcon}
@@ -197,7 +191,7 @@ const renderItem = ({item }) => (
 
     return (
       <View style={{ alignItems: "center" }}>
-      <Text style={styles.item}>No data found</Text>
+      <Text style={styles.item}>No data      found</Text>
       {/* <Text style={styles.item}>rows : {remindRows}</Text> */}
       <Text style={styles.item}>rows : {5}</Text>
 

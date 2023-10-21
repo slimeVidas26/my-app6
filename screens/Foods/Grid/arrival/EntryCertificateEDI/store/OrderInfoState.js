@@ -6,14 +6,14 @@ import {Text , View , StyleSheet } from 'react-native'
 
 
 
-import data from '../../../../../../data/Datas'
+//import data from '../../../../../../data/Datas'
 
 
 const OrderInfoState = () => {
 
 
     const [OrderInfo, setOrderInfo] = useState({
-        data : data , 
+        //data : data , 
         closedData : data.filter((item)=>item.isOpen===false),
 
         inputPlaceholder :'Search Order',

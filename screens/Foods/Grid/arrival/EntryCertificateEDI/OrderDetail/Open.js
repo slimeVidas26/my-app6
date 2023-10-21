@@ -9,6 +9,7 @@ import {ChooseRedStampReasonScreen} from './ChooseRedStampReasonScreen';
 import { Ionicons } from '@expo/vector-icons';
 import {View ,Text, StyleSheet} from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 import { DocumentReview } from '../../DocumentReview';
 import { useQuery } from "@apollo/client";
 import {EDI_ORDER_ITEMS_BY_NUMBER_QUERY } from '../../../../../../gql/Query'
@@ -29,9 +30,17 @@ if (error) {
   console.error('EDI_ORDER_ITEMS_BY_NUMBER_QUERY error', error);
 }
 
-// const store = {...OrderInfoState() ,data ,  ref , searchIcon , initialRows , 
-//   //openTab 
-// }
+ const openTab = data.ediOrderItemsByNumber.filter((item )=>item.product=== "shampoo")
+ //.map((item)=>  item.order_details
+     //.filter((order)=>order.isOpen === 'true')).flat()
+
+ const store = {...OrderInfoState() ,
+  data ,
+    ref ,
+     searchIcon ,
+     // initialRows , 
+   openTab 
+ }
 //  console.log('store' , store)
  
 
@@ -98,7 +107,7 @@ console.log('route.params.orderNumber' ,route.params )
     // )
 
    return (
-    
+   <EDIContext.Provider value = {store} >
  <Stack.Navigator >
 
    <Stack.Group
@@ -135,6 +144,7 @@ console.log('route.params.orderNumber' ,route.params )
 
    </Stack.Group>
  </Stack.Navigator>
+ </EDIContext.Provider>  
 
    )
 }
