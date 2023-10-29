@@ -20,6 +20,9 @@ import { HELLO_QUERY } from '../../../../../../gql/Query';
 
 export const Open = ({route}) => {
 
+  console.log('route.params.id from Open' ,route.params.id )
+  console.log('route.params.orderNumber' ,route.params ) 
+
  // console.log('OrderInfoState()', OrderInfoState().data.ediOrderItemsByNumber[0].code)
  const {data, error, loading} =  useQuery(EDI_ORDER_ITEMS_BY_NUMBER_QUERY , {
   variables : {ediOrder : route.params.id}
@@ -33,16 +36,16 @@ if (error) {
 
 
 
- const openTab = data.ediOrderItemsByNumber.filter((item )=>item.product=== "shampoo")
+ const openTab =async()=>await data.ediOrderItemsByNumber.filter((item )=>item.product=== "shampoo")
  //.map((item)=>  item.order_details
      //.filter((order)=>order.isOpen === 'true')).flat()
 
-  //    useEffect(() => {
-  //     openTab();
-  // }, []);
+  //     useEffect(() => {
+  //      openTab();
+  //  }, []);
 
  const store = {...OrderInfoState() ,
-  data ,
+  //data ,
     ref ,
      searchIcon ,
      // initialRows , 
@@ -55,8 +58,7 @@ if (error) {
 //   variables: {name: "Jacob"},
 // });
 
-console.log('route.params.id' ,route.params.id )
-console.log('route.params.orderNumber' ,route.params )
+
 
 
   
