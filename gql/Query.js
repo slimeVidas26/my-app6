@@ -11,7 +11,7 @@ import { gql } from "@apollo/client";
 export  const EDI_ORDER_ITEMS_BY_NUMBER_QUERY = gql`
 query EdiOrderItemsByNumberQuery($ediOrder : String) {
     ediOrderItemsByNumber(ediOrder: $ediOrder) {
-        
+        product
         code
     }
 }`

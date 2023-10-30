@@ -36,13 +36,14 @@ if (error) {
 
 
 
- const openTab =async()=>await data.ediOrderItemsByNumber.filter((item )=>item.product=== "shampoo")
+ const openTab =async()=> await  data.ediOrderItemsByNumber.filter((item )=>item.product=== "shampoo")
  //.map((item)=>  item.order_details
      //.filter((order)=>order.isOpen === 'true')).flat()
 
   //     useEffect(() => {
   //      openTab();
   //  }, []);
+  console.log("OPENTAB" , openTab())
 
  const store = {...OrderInfoState() ,
   //data ,
