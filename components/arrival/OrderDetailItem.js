@@ -15,8 +15,8 @@ import { TabRouter, useNavigation , useRoute } from '@react-navigation/native'
         item,code , product , quantity }) }} >
     <View style={{...styles.label(isOpen) , ...styles.label(isFull) }}>
       <Text  style={styles.title}>Code : {code}</Text>
-      <Text  style={styles.title}>Product : {product}</Text>
-      <Text  style={styles.title}>Quantity : {quantity}</Text>
+      {/* <Text  style={styles.title}>Product : {product}</Text> */}
+      {/* <Text  style={styles.title}>Quantity : {quantity}</Text> */}
 
       {/* <Text style={styles.title}>Name : {item.name}</Text>
       <Text style={styles.title}>Quantity :{item.quantity}</Text>

@@ -16,23 +16,27 @@ import {EDI_ORDER_ITEMS_BY_NUMBER_QUERY } from '../../../../../../gql/Query'
 import { HELLO_QUERY } from '../../../../../../gql/Query';
 const Stack = createNativeStackNavigator();
 
+
+
 export const Open = ({route})=>{
 
-   const {data, error, loading} =  useQuery(EDI_ORDER_ITEMS_BY_NUMBER_QUERY , {
-   variables : {ediOrder : route.params.id}
- });
- console.log('DATA' , data)
+  const {data, error, loading} =  useQuery(EDI_ORDER_ITEMS_BY_NUMBER_QUERY , {
+    variables : {ediOrder : route.params.id}
+  });
+  console.log('DATA' , data)
+  
+  if (error) {
+    console.error('EDI_ORDER_ITEMS_BY_NUMBER_QUERY error', error);
+  }  
 
- if (error) {
-   console.error('EDI_ORDER_ITEMS_BY_NUMBER_QUERY error', error);
- } 
 
   //Context 1
 
   const context1InitialState = {
-    data:data , 
-    error:error,
-    loading:loading,
+    data:data,
+    openData:null , 
+    error:null,
+    loading:null,
     fullName: null,
     destinationCountry: null,
     departureCountry: null
@@ -40,12 +44,15 @@ export const Open = ({route})=>{
 
   const [passengerInfo, setPassengerInfo] = useState(context1InitialState);
 
-    function openTab() {
-    const res =    data.ediOrderItemsByNumber.filter((item )=>item.product=== "shampoo")
+    function openTab() { 
+      // const ediOrderItemsByNumber = data.ediOrderItemsByNumber;
+    const openData =()=> data.ediOrderItemsByNumber.filter((item )=>item.product=== "shampoo")
         .map((item)=>  item.code);
-        const newState = { ...passengerInfo, res };
+        const newState = { ...passengerInfo, openData };
         setPassengerInfo(newState);
     } 
+
+    //console.log("openTab" , openTab)
 
   function setFullName(fullName) {
     const newState = { ...passengerInfo, fullName };
@@ -62,7 +69,7 @@ export const Open = ({route})=>{
     setPassengerInfo(newState);
   }
 
-  console.log("passengerInfo" , passengerInfo)
+  // console.log("passengerInfo.data.ediOrderItemsByNumber" , passengerInfo.data.ediOrderItemsByNumber)
 
   const context1Setters = {
     openTab , 
@@ -70,6 +77,8 @@ export const Open = ({route})=>{
     setDestinationCountry,
     setDepartureCountry
   }
+
+  //console.log("context1Setters.openTab",context1Setters.openTab())
 
   return (
     <EDIContext.Provider value={{ ...passengerInfo, ...context1Setters }}>
