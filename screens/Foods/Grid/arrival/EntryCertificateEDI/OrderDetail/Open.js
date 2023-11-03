@@ -18,15 +18,34 @@ const Stack = createNativeStackNavigator();
 
 export const Open = ({route})=>{
 
+   const {data, error, loading} =  useQuery(EDI_ORDER_ITEMS_BY_NUMBER_QUERY , {
+   variables : {ediOrder : route.params.id}
+ });
+ console.log('DATA' , data)
+
+ if (error) {
+   console.error('EDI_ORDER_ITEMS_BY_NUMBER_QUERY error', error);
+ } 
+
   //Context 1
 
   const context1InitialState = {
+    data:data , 
+    error:error,
+    loading:loading,
     fullName: null,
     destinationCountry: null,
     departureCountry: null
   };
 
   const [passengerInfo, setPassengerInfo] = useState(context1InitialState);
+
+    function openTab() {
+    const res =    data.ediOrderItemsByNumber.filter((item )=>item.product=== "shampoo")
+        .map((item)=>  item.code);
+        const newState = { ...passengerInfo, res };
+        setPassengerInfo(newState);
+    } 
 
   function setFullName(fullName) {
     const newState = { ...passengerInfo, fullName };
@@ -43,7 +62,10 @@ export const Open = ({route})=>{
     setPassengerInfo(newState);
   }
 
+  console.log("passengerInfo" , passengerInfo)
+
   const context1Setters = {
+    openTab , 
     setFullName,
     setDestinationCountry,
     setDepartureCountry
