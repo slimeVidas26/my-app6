@@ -27,7 +27,10 @@ export const Open = ({route})=>{
   // console.log(useQuery(EDI_ORDER_ITEMS_BY_NUMBER_QUERY , {
   //   variables : {ediOrder : route.params.id}
   // }),)
-  console.log('DATA' , data)
+  
+    console.log('DATA' , data)
+  
+  
   
   if (error) {
     console.error('EDI_ORDER_ITEMS_BY_NUMBER_QUERY error', error);
@@ -38,8 +41,9 @@ export const Open = ({route})=>{
 
   const context1InitialState = {
     data:data,
-    openData:data.ediOrderItemsByNumber.filter((item )=>item.product=== "shampoo")
-    .map((item)=>  item.code) , 
+    openData:null,
+    // openData:data.ediOrderItemsByNumber.filter((item )=>item.product=== "shampoo")
+    // .map((item)=>  item.code) , 
     error:null,
     loading:null,
     fullName: null,
@@ -51,15 +55,14 @@ export const Open = ({route})=>{
 
   
 
-    function openTab() { 
-      // const ediOrderItemsByNumber = data.ediOrderItemsByNumber;
-    const openData = async()=> await data.ediOrderItemsByNumber.filter((item )=>item.product=== "shampoo")
+    
+        function openData(){  data.ediOrderItemsByNumber.filter((item )=>item.product=== "shampoo")
         .map((item)=>  item.code);
-        const newState = { ...passengerInfo, openData };
-        setPassengerInfo(newState);
-    } 
+        const newState = { ...passengerInfo, openData};
+        setPassengerInfo(newState);}
+    
 
-    console.log("openTab" , openTab)
+    //console.log("openTab" , openTab())
 
   function setFullName(fullName) {
     const newState = { ...passengerInfo, fullName };
@@ -79,13 +82,13 @@ export const Open = ({route})=>{
   // console.log("passengerInfo.data.ediOrderItemsByNumber" , passengerInfo.data.ediOrderItemsByNumber)
 
   const context1Setters = {
-    openTab , 
+    openData , 
     setFullName,
     setDestinationCountry,
     setDepartureCountry
   }
 
-  console.log("context1Setters.openTab",context1Setters.openTab)
+  //console.log("context1Setters.openTab",context1Setters.openTab)
 
   return (
     <EDIContext.Provider value={{ ...passengerInfo, ...context1Setters }}>

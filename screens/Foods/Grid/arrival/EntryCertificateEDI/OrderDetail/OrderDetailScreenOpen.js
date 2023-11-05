@@ -30,8 +30,8 @@ import { AntDesign ,  Ionicons } from '@expo/vector-icons';
 
 
    const context = useContext(EDIContext)
-  //  const { ref ,data, searchIcon , initialRows,setClosedData , openTab , openData} = context
-console.log("CONTEXT" ,context.openTab)
+    const { ref ,data, searchIcon , initialRows,setClosedData , openTab , openData} = context
+//console.log("CONTEXT OPENTAB" , openTab())
 //    console.log("openTab" , context.openTab())
 //  console.log('openData from OrderDetailScreenOpen' , openData())
 //  const arr =  openData().filter((item )=>item.reference === ref);
@@ -55,7 +55,7 @@ console.log("CONTEXT" ,context.openTab)
 
     // }
 
-   const remindRows = context.openTab.length;
+   const remindRows = context.openData.length;
 
  console.log('rowsFromOrderDetailScreenOpen' , remindRows)
 
@@ -284,7 +284,7 @@ console.log("CONTEXT" ,context.openTab)
       { 
        //all the orders
       ordersList && <FlatList 
-     data={()=>context.openData}
+     data={openData}
      renderItem={renderItem}
      keyExtractor={item => item.code} 
      ListEmptyComponent={myListEmpty}
