@@ -41,7 +41,8 @@ export const Open = ({route})=>{
 
   const context1InitialState = {
     data:data,
-    openData:null,
+    openData:data.ediOrderItemsByNumber.filter((item )=>item.product=== "shampoo")
+    .map((item)=>  item.code),
     // openData:data.ediOrderItemsByNumber.filter((item )=>item.product=== "shampoo")
     // .map((item)=>  item.code) , 
     error:null,
@@ -56,10 +57,11 @@ export const Open = ({route})=>{
   
 
     
-        function openData(){  data.ediOrderItemsByNumber.filter((item )=>item.product=== "shampoo")
-        .map((item)=>  item.code);
-        const newState = { ...passengerInfo, openData};
-        setPassengerInfo(newState);}
+        // const openData =   data.ediOrderItemsByNumber.filter((item )=>item.product=== "shampoo")
+        // .map((item)=>  item.code);
+        // console.log("openData" , openData)
+        // const newState = { ...passengerInfo, openData};
+        // setPassengerInfo(newState);
     
 
     //console.log("openTab" , openTab())
@@ -82,13 +84,16 @@ export const Open = ({route})=>{
   // console.log("passengerInfo.data.ediOrderItemsByNumber" , passengerInfo.data.ediOrderItemsByNumber)
 
   const context1Setters = {
-    openData , 
+    
     setFullName,
     setDestinationCountry,
     setDepartureCountry
   }
 
-  //console.log("context1Setters.openTab",context1Setters.openTab)
+  console.log("passengerInfo",passengerInfo)
+
+  console.log("context1Setters",context1Setters)
+
 
   return (
     <EDIContext.Provider value={{ ...passengerInfo, ...context1Setters }}>
