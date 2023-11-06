@@ -42,7 +42,7 @@ export const Open = ({route})=>{
   const context1InitialState = {
     data:data,
     openData:data.ediOrderItemsByNumber.filter((item )=>item.product=== "shampoo")
-    .map((item)=>  item.code),
+    .map((item)=>  item),
     // openData:data.ediOrderItemsByNumber.filter((item )=>item.product=== "shampoo")
     // .map((item)=>  item.code) , 
     error:null,

@@ -13,6 +13,8 @@ query EdiOrderItemsByNumberQuery($ediOrder : String) {
     ediOrderItemsByNumber(ediOrder: $ediOrder) {
         product
         code
+        quantity
+        
     }
 }`
 

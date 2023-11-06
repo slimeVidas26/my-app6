@@ -55,7 +55,7 @@ import { AntDesign ,  Ionicons } from '@expo/vector-icons';
 
     // }
 
-   const remindRows = context.openData.length;
+   const remindRows = openData.length;
 
  console.log('rowsFromOrderDetailScreenOpen' , remindRows)
 
@@ -152,10 +152,11 @@ import { AntDesign ,  Ionicons } from '@expo/vector-icons';
 
 
  const renderItem = ({item }) => (  
+
       <OrderDetailItem 
-      code = {item.code}
-      //product = {item.product}
-      //quantity = {item.quantity}
+                    code = {item.code}
+                   product = {item.product}
+                   quantity = {item.quantity}
                      /* clearInput = {clearInput}
                      rows = {remindRows}
                      nextHeaderIcon = {nextHeaderIcon}
@@ -271,7 +272,7 @@ import { AntDesign ,  Ionicons } from '@expo/vector-icons';
                  <FlatList 
                    data={item}
                    renderItem={renderItem}
-                   keyExtractor={item => item.code} 
+                   keyExtractor={item => item.id} 
                    ListEmptyComponent={myListEmpty}
                       />
                 
@@ -286,7 +287,7 @@ import { AntDesign ,  Ionicons } from '@expo/vector-icons';
       ordersList && <FlatList 
      data={openData}
      renderItem={renderItem}
-     keyExtractor={item => item.code} 
+     keyExtractor={item => item.id} 
      ListEmptyComponent={myListEmpty}
      /> }
        </>
