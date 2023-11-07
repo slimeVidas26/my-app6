@@ -20,21 +20,32 @@ const Stack = createNativeStackNavigator();
 
 export const Open = ({route})=>{
 
-  const {data, error, loading} =  useQuery(EDI_ORDER_ITEMS_BY_NUMBER_QUERY , {
+  const { loading, error, data } = useQuery(EDI_ORDER_ITEMS_BY_NUMBER_QUERY , {
     variables : {ediOrder : route.params.id}
   });
 
-  // console.log(useQuery(EDI_ORDER_ITEMS_BY_NUMBER_QUERY , {
+  if (loading) return <Text>Loading...</Text>;
+
+  //if (error) return `Error! ${error.message}`;
+
+  
+
+
+  // const {data, error, loading} =  useQuery(EDI_ORDER_ITEMS_BY_NUMBER_QUERY , {
   //   variables : {ediOrder : route.params.id}
-  // }),)
+  // });
+
+  // // console.log(useQuery(EDI_ORDER_ITEMS_BY_NUMBER_QUERY , {
+  // //   variables : {ediOrder : route.params.id}
+  // // }),)
   
-    console.log('DATA' , data)
+  //   console.log('DATA' , data)
   
   
   
-  if (error) {
-    console.error('EDI_ORDER_ITEMS_BY_NUMBER_QUERY error', error);
-  }  
+  // if (error) {
+  //   console.error('EDI_ORDER_ITEMS_BY_NUMBER_QUERY error', error);
+  // }  
 
 
   //Context 1
