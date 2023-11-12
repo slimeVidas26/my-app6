@@ -21,12 +21,15 @@ const Stack = createNativeStackNavigator();
 export const Open = ({route})=>{
 
   const { loading, error, data } = useQuery(EDI_ORDER_ITEMS_BY_NUMBER_QUERY , {
-    variables : {ediOrder : route.params.id}
+    variables : {ediOrder : route.params.id},
+    staleTime: Infinity,
+    cacheTime: Infinity,
+    keepPreviousData: true
   });
 
   if (loading) return <Text>Loading...</Text>;
 
-  //if (error) return `Error! ${error.message}`;
+  if (error) return `Error! ${error.message}`;
 
   
 
