@@ -24,14 +24,20 @@ export const Open = ({route})=>{
 
   const [variables, setVariables] = useState({ediOrder : route.params.id});
 
-  const { loading, error, data } = useQuery(EDI_ORDER_ITEMS_BY_NUMBER_QUERY , {
+  const { isLoading, error, data } = useQuery(EDI_ORDER_ITEMS_BY_NUMBER_QUERY , {
     variables ,
     // staleTime: Infinity,
     // cacheTime: Infinity,
     // keepPreviousData: true
   });
 
-  if (loading) return <Text>Loading...</Text>;
+  useEffect(() => {
+    if(!isLoading){
+     console.log("Page data", data); // when I refresh the page its undefined
+    }
+ }, [isLoading])
+
+  //if (loading) return <Text>Loading...</Text>;
 
   if (error) return `Error! ${error.message}`;
 
@@ -66,11 +72,11 @@ export const Open = ({route})=>{
     .map((item)=>  item),
     // openData:data.ediOrderItemsByNumber.filter((item )=>item.product=== "shampoo")
     // .map((item)=>  item.code) , 
-    error:null,
-    loading:null,
-    fullName: null,
-    destinationCountry: null,
-    departureCountry: null
+    //error:null,
+    //loading:null,
+    //fullName: null,
+    //destinationCountry: null,
+    //departureCountry: null
   };
 
   const [passengerInfo, setPassengerInfo] = useState(context1InitialState);
