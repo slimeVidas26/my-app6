@@ -31,13 +31,13 @@ export const Open = ({route})=>{
     // keepPreviousData: true
   });
 
-  useEffect(() => {
-    if(!isLoading){
-     console.log("Page data", data); // when I refresh the page its undefined
-    }
- }, [isLoading])
+//   useEffect(() => {
+//     if(!isLoading){
+//      console.log("Page data", data); // when I refresh the page its undefined
+//     }
+//  }, [isLoading])
 
-  //if (loading) return <Text>Loading...</Text>;
+  if (isLoading) return <Text>Loading...</Text>;
 
   if (error) return `Error! ${error.message}`;
 
@@ -55,7 +55,7 @@ export const Open = ({route})=>{
   // //   variables : {ediOrder : route.params.id}
   // // }),)
   
-  //   console.log('DATA' , data)
+     console.log('DATA' , data)
   
   
   
