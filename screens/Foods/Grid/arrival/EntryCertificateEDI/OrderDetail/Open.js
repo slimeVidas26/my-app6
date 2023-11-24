@@ -76,7 +76,7 @@ export const Open = ({route})=>{
 
   const context1InitialState = {
     data:data,
-     openData:null,
+     //openData:null,
     // .map((item)=>  item),
     // openData:data.ediOrderItemsByNumber.filter((item )=>item.product=== "shampoo")
     // .map((item)=>  item.code) , 

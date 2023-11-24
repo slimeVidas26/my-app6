@@ -16,12 +16,12 @@ import { TabRouter, useNavigation , useRoute } from '@react-navigation/native'
       {  
         
             navigation.navigate('MyTabs',{
-                id,
+                id: "651d2b6fbd737353eb2c50db",
                 orderNumber,
                 date , 
                 rows , 
                 quantity,
-                searchIcon: true,
+                searchIcon: route.params.searchIcon,
                  } )  }}>
     <View style={styles.item}>
     <Text style={styles.title}>id : {id}</Text>

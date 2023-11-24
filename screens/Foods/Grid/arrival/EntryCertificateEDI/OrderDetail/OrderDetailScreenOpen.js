@@ -48,6 +48,9 @@ console.log("DATA FROM ORDERdETAILS"  ,data)
 const  openData = data.ediOrderItemsByNumber.filter((item )=>item.product=== "shampoo")
       .map((item)=>  item)
 
+
+      console.log("OPENDATA" , openData)
+
    
 
     // const getClosedData = ()=>{
