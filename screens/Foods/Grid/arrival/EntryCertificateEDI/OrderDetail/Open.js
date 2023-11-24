@@ -22,14 +22,14 @@ export const Open = ({route})=>{
 
   console.log("ROUTE=PARAM-ID" , route.params.id)
 
-  const [variables, setVariables] = useState({ediOrder : route.params.id});
+  // const [variables, setVariables] = useState({ediOrder : route.params.id});
 
-  const { isLoading, error, data } = useQuery(EDI_ORDER_ITEMS_BY_NUMBER_QUERY , {
-    variables ,
+  // const { isLoading, error, data } = useQuery(EDI_ORDER_ITEMS_BY_NUMBER_QUERY , {
+  //   variables ,
     // staleTime: Infinity,
     // cacheTime: Infinity,
     // keepPreviousData: true
-  });
+  //});
 
 //   useEffect(() => {
 //     if(!isLoading){
@@ -37,39 +37,47 @@ export const Open = ({route})=>{
 //     }
 //  }, [isLoading])
 
-  if (isLoading) return <Text>Loading...</Text>;
+  
 
-  if (error) return `Error! ${error.message}`;
-
-      console.log('DATA , VARIABLES' , data , variables)
+  //     console.log('DATA , VARIABLES' , data , variables)
 
 
   
 
 
-  // const {data, error, loading} =  useQuery(EDI_ORDER_ITEMS_BY_NUMBER_QUERY , {
-  //   variables : {ediOrder : route.params.id}
-  // });
+   const {data, error, isLoading} =  useQuery(EDI_ORDER_ITEMS_BY_NUMBER_QUERY , {
+     variables : {ediOrder : route.params.id}
+   });
 
-  // // console.log(useQuery(EDI_ORDER_ITEMS_BY_NUMBER_QUERY , {
-  // //   variables : {ediOrder : route.params.id}
-  // // }),)
+    // console.log(useQuery(EDI_ORDER_ITEMS_BY_NUMBER_QUERY , {
+    //   variables : {ediOrder : route.params.id}
+    // }),)
+
+   
   
      console.log('DATA' , data)
+
+     if (isLoading) return <Text>Loading...</Text>;
+
+     if (error) return `Error! ${error.message}`;
+
+
+
+     
   
   
   
-  // if (error) {
-  //   console.error('EDI_ORDER_ITEMS_BY_NUMBER_QUERY error', error);
-  // }  
+  //  if (error) {
+  //    console.error('EDI_ORDER_ITEMS_BY_NUMBER_QUERY error', error);
+  //  }  
 
 
   //Context 1
 
   const context1InitialState = {
     data:data,
-    openData:data.ediOrderItemsByNumber.filter((item )=>item.product=== "shampoo")
-    .map((item)=>  item),
+     openData:null,
+    // .map((item)=>  item),
     // openData:data.ediOrderItemsByNumber.filter((item )=>item.product=== "shampoo")
     // .map((item)=>  item.code) , 
     //error:null,

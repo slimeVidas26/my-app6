@@ -30,8 +30,10 @@ import { AntDesign ,  Ionicons } from '@expo/vector-icons';
 
 
    const context = useContext(EDIContext)
-    const { ref ,data, searchIcon , initialRows,setClosedData , openTab , openData} = context
-//console.log("CONTEXT OPENTAB" , openTab())
+    const { ref ,data, searchIcon , initialRows,setClosedData , openTab} = context
+
+console.log("DATA FROM ORDERdETAILS"  ,data)
+    //console.log("CONTEXT OPENTAB" , openTab())
 //    console.log("openTab" , context.openTab())
 //  console.log('openData from OrderDetailScreenOpen' , openData())
 //  const arr =  openData().filter((item )=>item.reference === ref);
@@ -43,7 +45,8 @@ import { AntDesign ,  Ionicons } from '@expo/vector-icons';
 //  console.log(' openTab', openTab )
 
 
-
+const  openData = data.ediOrderItemsByNumber.filter((item )=>item.product=== "shampoo")
+      .map((item)=>  item)
 
    
 
@@ -55,9 +58,9 @@ import { AntDesign ,  Ionicons } from '@expo/vector-icons';
 
     // }
 
-   const remindRows = openData.length;
+   //const remindRows = openData.length;
 
- console.log('rowsFromOrderDetailScreenOpen' , remindRows)
+ //console.log('rowsFromOrderDetailScreenOpen' , remindRows)
 
 
   
@@ -287,7 +290,10 @@ import { AntDesign ,  Ionicons } from '@expo/vector-icons';
       ordersList && <FlatList 
      data={openData}
      renderItem={renderItem}
-     keyExtractor={item => item.id} 
+     //keyExtractor={item => item.id} 
+     keyExtractor={(item, index) => {
+          return item.id;
+        }}
      ListEmptyComponent={myListEmpty}
      /> }
        </>
