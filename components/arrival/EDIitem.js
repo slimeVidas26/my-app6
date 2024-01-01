@@ -15,7 +15,7 @@ import { TabRouter, useNavigation , useRoute } from '@react-navigation/native'
   <TouchableOpacity style={styles.item} onPress = {()=> 
       {  
         
-            navigation.navigate('MyTabs',{
+            navigation.navigate('MyTabs2',{
                 id: "651d2b6fbd737353eb2c50db",
                 orderNumber,
                 date , 

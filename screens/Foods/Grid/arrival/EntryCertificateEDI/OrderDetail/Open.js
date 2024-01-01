@@ -40,7 +40,7 @@ export const Open = ({route})=>{
   
 
   //     console.log('DATA , VARIABLES' , data , variables)
-
+ 
 
   
 
