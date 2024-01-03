@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { Button, Text, TextInput, View } from 'react-native';
-import { Context2 } from '../../App';
+import { Context2 } from '../App';
 
-import { CommonStyles } from '../Utils/CommonStyles';
+//import { CommonStyles } from '../Utils/CommonStyles';
 
-function Screen8({ navigation }) {
+export function Screen8({ navigation }) {
 
     const context = useContext(Context2)
 
@@ -40,4 +40,3 @@ function Screen8({ navigation }) {
     );
 }
 
-export default Screen8;

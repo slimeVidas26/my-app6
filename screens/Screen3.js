@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import { Button, Text, TextInput, View } from 'react-native';
-import { Context1 } from '../../App';
-function Screen3({ navigation }) {
+import { Context1 } from '../App';
+
+export function Screen3({ navigation }) {
 const context = useContext(Context1)
 return (
 <View>
@@ -15,4 +16,3 @@ context.setDepartureCountry(depart)
 </View>
 );
 }
-export default Screen3;

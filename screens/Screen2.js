@@ -1,7 +1,9 @@
 import React, { useContext } from 'react';
 import { Button, Text, TextInput, View } from 'react-native';
-import { Context1 } from '../../App';
-function Screen2({ navigation }) {
+import { Context1 } from '../App';
+
+
+export function Screen2({ navigation }) {
 const context = useContext(Context1)
 return (
 <View>
@@ -17,4 +19,3 @@ navigation.navigate('Screen 3')
 </View>
 );
 }
-export default Screen2;
