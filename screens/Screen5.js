@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Button, Text, TextInput, View } from 'react-native';
 import { Context2 } from '../App';
 export function Screen5({ navigation }) {
-
+y
 const context = useContext(Context2)
 return (
 <View>
