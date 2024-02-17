@@ -1,6 +1,6 @@
 import React, { useState , useCallback, useEffect } from "react";
 import { AntDesign } from '@expo/vector-icons';
-import { SafeAreaView,View,FlatList,Dimensions, StyleSheet,Text,StatusBar,Button,TouchableOpacity,TextInput,ActivityIndicator} from 'react-native';
+import { SafeAreaView,ImageBackground,View,FlatList,Dimensions,Image, StyleSheet,Text,StatusBar,Button,TouchableOpacity,TextInput,ActivityIndicator} from 'react-native';
 import { translation } from "../i18n/supportedLanguages";
 import * as Localization from 'expo-localization';
 import { I18n } from 'i18n-js';
@@ -27,11 +27,14 @@ i18n.enableFallback = true;
 
 const spacing = 5;
 const width = (Dimensions.get('window').width - 2 * 10) / 2;
+// const image = {uri: 'https://legacy.reactjs.org/logo-og.png'};
+ const image = require('../assets/logo-og.png');
+
 
 export  function GridScreen({navigation}) {
 
   const {data, error, loading} = useQuery(DEPARTMENTS_QUERY);
-  console.log('data' , data)
+  //console.log('data' , data)
 
   if (error) {
     console.error('DEPARTMENTS_QUERY error', error);
@@ -39,11 +42,11 @@ export  function GridScreen({navigation}) {
 
 const DepartmentItem = ({ department}) => {
   const { title , id } = department; 
-  console.log('title' , title , id)
+  console.log( title , id)
 return(
   <TouchableOpacity  onPress={() => navigation.navigate( i18n.t(title))}>
   <Card
-      containerStyle={[styles.card, { height:140 }]}>
+      containerStyle={[styles.card, { height:90 }]}>
       <Text style={styles.text}>
       {i18n.t(title)}
       </Text>
@@ -60,6 +63,19 @@ return(
   return (
     <View style={styles.container}>
 
+    {/* <View style = {styles.image}>
+    <Image  source={require('../assets/today.jpg')}
+    placeholder={"rami-levi"}
+        contentFit="cover"
+        transition={1000} />
+    </View> */}
+
+    {/* <View style = {styles.placeholder}></View> */}
+
+    <ImageBackground source={image} resizeMode="cover" style={styles.image}>
+      <Text style={styles.text}>Inside</Text>
+    </ImageBackground>
+
     {loading && <Text>Loading...</Text>}
       {error && <Text>Check console for error logs</Text>}
       {!loading && !error && data && <FlatList
@@ -72,13 +88,6 @@ return(
         numColumns={2}
         columnWrapperStyle={styles.column}
       />}
-
-     
-      
-     
-
-     
-     
     </View>
   );
 }
@@ -92,6 +101,32 @@ const styles = StyleSheet.create({
     paddingTop: Constants.statusBarHeight/2,
     flexDirection: 'column',  
   },
+
+  image: {
+    flex: 1,
+    justifyContent: 'center',
+  
+  //   //  width : null,
+  //   //  height : 220,
+  //    backgroundColor: '#0553',
+  //   aspectRatio: 1.4, 
+  //   marginBottom : 80,
+  //   alignItems: 'center',
+  //   position : 'relative',
+  //   top:30,
+  //   resizeMode: 'contain'
+  },
+
+  placeholder :{
+    height: "35%",
+    backgroundColor:"yellow",
+    marginBottom : 30,
+    marginTop : 30
+
+
+  },
+
+  
   column: {
     flexShrink: 1,
   },
@@ -107,7 +142,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: width,
     margin: spacing,
-  },
+    borderRadius: 1000  },
+
   text: {
     color: "black",
     fontSize: 25,
@@ -118,7 +154,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 15,
     top:20,
-    //display:'none'
+    display:'none'
   },
   number: {
     color: "red",
@@ -135,6 +171,7 @@ const styles = StyleSheet.create({
       // // height: 140,
        justifyContent: "center",
        alignItems: "center",
+       borderRadius:10
     },
   
     item: {
