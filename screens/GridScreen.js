@@ -9,6 +9,7 @@ import { Card } from '@rneui/themed';
 import logo from '../assets/today.jpg'
 
 
+
 import { useQuery } from "@apollo/client";
 import { DEPARTMENTS_QUERY } from "../gql/Query";
 const i18n = new I18n(translation)
@@ -30,6 +31,7 @@ const spacing = 5;
 const width = (Dimensions.get('window').width - 2 * 10) / 2;
 // const image = {uri: 'https://legacy.reactjs.org/logo-og.png'};
  //const image = require('../assets/logo-og.png');
+
 
 
 export  function GridScreen({navigation}) {
@@ -63,6 +65,8 @@ return(
 
   return (
     <View style={styles.container}>
+
+  
 
     {/* <View style = {styles.image}>
     <Image  source={require('../assets/today.jpg')}
