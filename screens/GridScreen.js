@@ -6,6 +6,7 @@ import * as Localization from 'expo-localization';
 import { I18n } from 'i18n-js';
 import Constants from 'expo-constants';
 import { Card } from '@rneui/themed';
+import logo from '../assets/today.jpg'
 
 
 import { useQuery } from "@apollo/client";
@@ -28,7 +29,7 @@ i18n.enableFallback = true;
 const spacing = 5;
 const width = (Dimensions.get('window').width - 2 * 10) / 2;
 // const image = {uri: 'https://legacy.reactjs.org/logo-og.png'};
- const image = require('../assets/logo-og.png');
+ //const image = require('../assets/logo-og.png');
 
 
 export  function GridScreen({navigation}) {
@@ -72,8 +73,8 @@ return(
 
     {/* <View style = {styles.placeholder}></View> */}
 
-    <ImageBackground source={image} resizeMode="cover" style={styles.image}>
-      <Text style={styles.text}>Inside</Text>
+    <ImageBackground source={logo} resizeMode="cover" style={styles.image}>
+      <Text style={styles.logoText}>What We Will Do Today</Text>
     </ImageBackground>
 
     {loading && <Text>Loading...</Text>}
@@ -148,6 +149,13 @@ const styles = StyleSheet.create({
     color: "black",
     fontSize: 25,
     fontWeight: "bold",
+    
+  },
+  logoText: {
+    color: "white",
+    fontSize: 25,
+    fontWeight: "bold",
+    textAlign:'center'
     
   },
   icon: {
