@@ -6,7 +6,7 @@ import * as Localization from 'expo-localization';
 import { I18n } from 'i18n-js';
 import Constants from 'expo-constants';
 import { Card } from '@rneui/themed';
-import logo from '../assets/today.jpg'
+import logo from '../assets/warehouse.png'
 
 
 
@@ -78,7 +78,7 @@ return(
     {/* <View style = {styles.placeholder}></View> */}
 
     <ImageBackground source={logo} resizeMode="cover" style={styles.image}>
-      <Text style={styles.logoText}>What We Will Do Today</Text>
+      {/* <Text style={styles.logoText}>What We Will Do Today ?</Text> */}
     </ImageBackground>
 
     {loading && <Text>Loading...</Text>}
@@ -103,13 +103,13 @@ const styles = StyleSheet.create({
     flex: 1,
     //gap: '1rem',
     //flexWrap: "wrap",
-    paddingTop: Constants.statusBarHeight/2,
     flexDirection: 'column',  
   },
 
   image: {
     flex: 1,
     justifyContent: 'center',
+    paddingBottom :200,
   
   //   //  width : null,
   //   //  height : 220,
@@ -147,19 +147,20 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: width,
     margin: spacing,
-    borderRadius: 1000  },
+    borderRadius: 10  },
 
   text: {
     color: "black",
-    fontSize: 25,
+    fontSize: 22,
     fontWeight: "bold",
     
   },
   logoText: {
-    color: "white",
+    color: "black",
     fontSize: 25,
     fontWeight: "bold",
-    textAlign:'center'
+    textAlign:'center',
+    top:'50%'
     
   },
   icon: {
@@ -183,7 +184,8 @@ const styles = StyleSheet.create({
       // // height: 140,
        justifyContent: "center",
        alignItems: "center",
-       borderRadius:10
+       borderRadius:10,
+       padding:5
     },
   
     item: {

@@ -482,6 +482,8 @@ function App() {
       <Stack.Navigator screenOptions={() => ({
                     headerStyle: {
                         backgroundColor: 'coral',
+  
+                        
                     },
                     headerTintColor: 'white',
                     headerTitleStyle: {
@@ -489,7 +491,7 @@ function App() {
                     },
                 })}>
  {/* <Stack.Screen name="Hello" component={HelloScreen} options = {{title:"Hello"}} /> */}
-<Stack.Screen name="Home" component={HomeScreen} options = {{title:"Home"}} />
+<Stack.Screen  name="Home" component={HomeScreen} options = {{title:"Home"}} />
 <Stack.Screen name="Login" component={LoginScreen} options = {{title:"Login"}} />
 <Stack.Screen name="Warehouses" component={WarehousesScreen} options = {{title:"Warehouses"}} />
 <Stack.Screen name="Grid" component={GridScreen} options = {{title:"Grid"}} />
