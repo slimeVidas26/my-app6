@@ -3,7 +3,7 @@ import {View , Text , StyleSheet , TouchableOpacity} from 'react-native'
 import { TabRouter, useNavigation , useRoute } from '@react-navigation/native'
 
 
- export const EDIitem = ({item , rows }) => {
+ export const EDIitem = ({id , orderNumber , date , rows , quantity}) => {
   const navigation = useNavigation()
   const route = useRoute()
   // const D = new Date(item.date)
@@ -16,17 +16,21 @@ import { TabRouter, useNavigation , useRoute } from '@react-navigation/native'
       {  
         
             navigation.navigate('MyTabs',{
-                item,
-                searchIcon: true,
-                rows } )  }}>
+                id: "651d2b6fbd737353eb2c50db",
+                orderNumber,
+                date , 
+                rows , 
+                quantity,
+                searchIcon: route.params.searchIcon,
+                 } )  }}>
     <View style={styles.item}>
-      <Text style={styles.title}>Reference : {item.reference}</Text>
-      <Text style={styles.title}>Date : {item.date}</Text>
-      <Text style={styles.title}>Supplier :{item.supplier}</Text>
-      <Text style={styles.title}>Rows :{item.rows}</Text>
-      <Text style={styles.title}>Quantity :{item.quantity}</Text>
-       <Text style={styles.title}>Supplied :{item.supplied}</Text>
-      <Text style={styles.title}>isOpen :{item.isOpen}</Text>
+    <Text style={styles.title}>id : {id}</Text>
+      <Text style={styles.title}>orderNumber : {orderNumber}</Text>
+       <Text style={styles.title}>Date :{date}</Text>
+      <Text style={styles.title}>Rows :{rows}</Text>
+      <Text style={styles.title}>Quantity :{quantity}</Text>
+       {/* <Text style={styles.title}>Supplied :{item.supplied}</Text>
+      <Text style={styles.title}>isOpen :{item.isOpen}</Text>  */}
       
     </View>
     </TouchableOpacity>

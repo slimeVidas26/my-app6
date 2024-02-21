@@ -5,7 +5,8 @@ import { I18n } from 'i18n-js';
 import { translation } from "../i18n/supportedLanguages";
 import { useQuery } from "@apollo/client";
 import { WAREHOUSES_QUERY } from "../gql/Query";
-
+import { HELLO_QUERY } from "../gql/Query";
+//import { EDI_ORDER_ITEMS_BY_NUMBER_QUERY } from "../gql/Query";
 
 // Set the key-value pairs for the different languages you want to support.
 const i18n = new I18n(translation);
@@ -27,6 +28,27 @@ const i18n = new I18n(translation);
   if (error) {
     console.error('WAREHOUSE_QUERY error', error);
 }
+
+// const {data, error, loading} =  useQuery(EDI_ORDER_ITEMS_BY_NUMBER_QUERY);
+//   console.log('EDI_ORDER_ITEMS_BY_NUMBER_QUERY data from open' , data)
+
+//   if (error) {
+//     console.error('EDI_ORDER_ITEMS_BY_NUMBER_QUERY error', error);
+//   }
+
+
+
+// const { data, loading, error } = useQuery(HELLO_QUERY, {
+//   variables: {name: "Jacob"},
+// });
+
+// console.log('HELLO_QUERY' , data)
+
+// if (error) {
+//   console.error('HELLO_QUERY error', error);
+// }
+
+
   
 
   const WarehouseItem = ({ warehouse}) => {

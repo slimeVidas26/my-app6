@@ -1,13 +1,32 @@
 import { gql } from "@apollo/client";
 
+ export const HELLO_QUERY = gql`
+ query Query($name: String) {
+     hello(name: $name)
+ }
+`
+
+
+
+export  const EDI_ORDER_ITEMS_BY_NUMBER_QUERY = gql`
+query EdiOrderItemsByNumberQuery($ediOrder : String) {
+    ediOrderItemsByNumber(ediOrder: $ediOrder) {
+        product
+        code
+        quantity
+        
+    }
+}`
+
 export  const WAREHOUSES_QUERY = gql`
      query WarehouseQuery {
          warehouses {
             id
-             title
-             
+             title  
          }
      }`
+
+ 
 
 export  const DEPARTMENTS_QUERY = gql`
      query DepartmentQuery {
@@ -50,6 +69,21 @@ query OpenOrdersQuery {
      
     }
 }`
+
+export  const EDI_ORDERS_QUERY = gql`
+query EdiOrdersQuery {
+    ediOrders {
+    id
+    orderNumber
+    date
+    rows
+    quantity
+    }
+}`
+
+
+
+
 
 export  const CLOSED_ORDERS_QUERY = gql`
 query ClosedOrdersQuery {

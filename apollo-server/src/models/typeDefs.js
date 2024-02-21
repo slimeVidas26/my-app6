@@ -15,17 +15,62 @@ export const typeDefs = gql`
 
 
   type Query {
-    hello(firstName:String , lastName : String): String,
-    warehouses: [Warehouse],
-    departments: [Department],
-    arrivals:[Arrival],
-    suppliers:[Supplier],
-    orders:[Order]
-    openOrders:[Order],
-    closedOrders: [Order],
-    orderItems: [OrderItem]
+    hello(name: String): String!
+    warehouses: [Warehouse!],
+    departments: [Department!],
+    arrivals:[Arrival!],
+    suppliers:[Supplier!],
+    orders:[Order!]
+    openOrders:[Order!],
+    closedOrders: [Order!],
+    orderItems: [OrderItem!],
+    authors: [Author!]
+    books: [Book!]
+    ediOrders:[EdiOrder!]
+    ediOrderItems:[EdiOrderItem!]
+    ediOrderItemsByNumber(ediOrder: String):[EdiOrderItem!]
     
   }
+
+  type Mutation {
+    createAuthor(name: String!): Author!
+    createEdiOrder(orderNumber: String! , rows:Int! ,quantity:Int!): EdiOrder!
+
+    createBook(name: String!, pages: Int, author: String!): Book!
+    createEdiOrderItem(code: String, product: String!,quantity:Int! ,  ediOrder: String!): EdiOrderItem!
+
+  }
+
+  type Author {
+  id: ID!
+  name: String!
+  books: [Book!]
+}
+
+type EdiOrder {
+  id: ID!
+  orderNumber: String!
+  date: Date!
+  rows: Int!
+  quantity: Int!
+  isOpen:Boolean
+  ediOrderItems: [EdiOrderItem!]
+}
+
+type EdiOrderItem {
+     id: ID!,
+     code: String,
+      product: String,
+      quantity: Int!
+      ediOrder: EdiOrder!
+      }
+
+  type Book {
+  id: ID!
+  name: String!
+  pages: Int
+  author: Author!
+}
 
   type Warehouse {
         id: ID,

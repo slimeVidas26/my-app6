@@ -58,7 +58,7 @@ i18n.enableFallback = true;
  return(
    <View>
   <TouchableOpacity style={styles.item}
-   onPress={() => navigation.navigate( i18n.t(title))}>
+   onPress={() => navigation.navigate( i18n.t(title) , {searchIcon : true})}>
    <Text style={styles.title}>{i18n.t(title)}</Text>
  </TouchableOpacity>
  </View>

@@ -21,7 +21,7 @@ i18n.enableFallback = true;
 // i18n.locale = 'ja';
 
 import { useQuery } from "@apollo/client";
-import {OPEN_ORDERS_QUERY} from '../../../../../gql/Query'
+import {EDI_ORDERS_QUERY} from '../../../../../gql/Query'
 
 export const  EntryCertificateEDIScreen = () =>{
 
@@ -31,11 +31,11 @@ export const  EntryCertificateEDIScreen = () =>{
     inputPlaceholder,  
   } = useContext(EDIContext);
 
-  const {data, error, loading} = useQuery(OPEN_ORDERS_QUERY);
-  console.log('data' , data)
+  const {data, error, loading} = useQuery(EDI_ORDERS_QUERY);
+  console.log('EDI_ORDERS_QUERY' , data)
 
   if (error) {
-    console.error('ORDER_QUERY error', error);
+    console.error('EDI_ORDERS_QUERY error', error);
 }
 
   //console.log('openData' , openData())
@@ -51,7 +51,9 @@ export const  EntryCertificateEDIScreen = () =>{
 
     const navigation = useNavigation()
     const route = useRoute();
-    //console.log('Current Route: ', route.name);
+    console.log('Current Route: ', route.name);
+    console.log('route params: ', route.params);
+
 
     const [item , setItem] = useState(null);
     const [message, setMessage] = useState('');
@@ -93,13 +95,14 @@ export const  EntryCertificateEDIScreen = () =>{
 
       
       const searchOrder = async()=>{  
-
         //reference
-        const getItemByReference = openData.filter(item => 
+        const getItemByOrderNumber = data.ediOrders[0].filter(item => 
               {
+                console.log("dataInSearchOrder" , data)
+
                 if(
-                  (item.reference.includes(number) && number.length > 2)
-                  || item.reference  === number
+                  (item.orderNumber.includes(number) && number.length > 2)
+                  || item.orderNumber  === number
                   ){
                      return  item
               }
@@ -107,13 +110,13 @@ export const  EntryCertificateEDIScreen = () =>{
           
         );  
         let promiseRef = new Promise((resolve, reject) => {
-        resolve(getItemByReference)});
+        resolve(getItemByOrderNumber)});
         
         let resultFromReference =  await promiseRef; // attendre que la promesse soit résolue (*)
         //console.log('resultFromReference' , resultFromReference)
 
         //////////////////////////////////////////////////////////////////
-        let getItemByCode = openData.filter((item)=>{
+        let getItemByCodeProduct = openData.filter((item)=>{
           let getOrderDetails = item.order_details.map((orderDetail)=> orderDetail)
           // console.log('getOrderDetails' , getOrderDetails)
           for (let index = 0; index < getOrderDetails.length; index++) {
@@ -124,10 +127,10 @@ export const  EntryCertificateEDIScreen = () =>{
           }  
         })
 
-        //console.log('getItemByCode' , getItemByCode)
+        //console.log('getItemByCodeProduct' , getItemByCodeProduct)
 
         let promiseFromCode = new Promise((resolve, reject) => {
-          resolve(getItemByCode)});
+          resolve(getItemByCodeProduct)});
           
           let resultFromCode =  await promiseFromCode; // attendre que la promesse soit résolue (*)
           //console.log('resultFromCode' , resultFromCode)
@@ -147,6 +150,7 @@ export const  EntryCertificateEDIScreen = () =>{
           
         
         }else if (number){
+          
           if(resultFromReference.length > 0  && resultFromCode.length ===0 ){
             startLoading()
               setShouldShow(true) 
@@ -197,11 +201,12 @@ export const  EntryCertificateEDIScreen = () =>{
          
           
      const renderItem = ({ item}) => (
+      // console.log("item" , item)
  
-            <EDIitem item={item}
-                   reference = {item.reference}
+            <EDIitem 
+                   id = {item.id}
+                   orderNumber = {item.orderNumber}
                    date = {item.date}
-                   supplier={item.supplier }
                    rows={item.rows }
                    quantity={item.quantity }
                    supplied={item.supplied }
@@ -252,10 +257,15 @@ export const  EntryCertificateEDIScreen = () =>{
                 {showIcon ?
            ( <TouchableOpacity onPress={handleClear}>
             <View>
-              {route.params.searchIcon ? 
+              {!route.params.searchIcon ? 
               (
-                <Ionicons style={styles.icon } name="search" size={24} color="black" />)
-             :(<AntDesign  style={styles.icon }  name="closesquare" size={24} color="black" />)}
+                <AntDesign  style={styles.icon }  name="closesquare" size={24} color="black" />
+
+                )
+             :(
+              <Ionicons style={styles.icon } name="search" size={24} color="black" />
+
+              )}
             </View>
           </TouchableOpacity>
         ) : null}
@@ -276,9 +286,9 @@ export const  EntryCertificateEDIScreen = () =>{
               ( 
   
                 <FlatList 
-                  data={item}
+                  data={data.ediOrders}
                   renderItem={renderItem}
-                  keyExtractor={item => item.id} 
+                  keyExtractor={(item , index) =>index.toString()}
                   ListEmptyComponent={myListEmpty}
                      />
                 
@@ -293,9 +303,9 @@ export const  EntryCertificateEDIScreen = () =>{
      { 
       //all the orders
      ordersList && <FlatList 
-    data={data.openOrders}
+    data={data.ediOrders}
     renderItem={renderItem}
-    keyExtractor={item => item.reference} 
+    keyExtractor={(item , index) =>index.toString()}
     ListEmptyComponent={myListEmpty}
     /> }
       </>
