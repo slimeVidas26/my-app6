@@ -38,15 +38,15 @@ import {ArrivalScreen} from './screens/Foods/Grid/arrival/ArrivalScreen';
    import {All} from './screens/Foods/Grid/arrival/EntryCertificateEDI/OrderDetail/All'
    import {Closed} from './screens/Foods/Grid/arrival/EntryCertificateEDI/OrderDetail/Closed'
 
-   import {Screen1} from './screens/Screen1';
-   import {Screen2} from './screens/Screen2' ;
-   import {Screen3} from './screens/Screen3';
-   import {Screen4} from './screens/Screen4';
+  //  import {Screen1} from './screens/Screen1';
+  //  import {Screen2} from './screens/Screen2' ;
+  //  import {Screen3} from './screens/Screen3';
+  //  import {Screen4} from './screens/Screen4';
 
-   import {Screen5} from './screens/Screen5';
-   import {Screen6} from './screens/Screen6';
-   import {Screen7} from './screens/Screen7';
-   import {Screen8} from './screens/Screen8';
+  //  import {Screen5} from './screens/Screen5';
+  //  import {Screen6} from './screens/Screen6';
+  //  import {Screen7} from './screens/Screen7';
+  //  import {Screen8} from './screens/Screen8';
 
 
 import {StockScreen} from './screens/Foods/StockScreen'
@@ -251,150 +251,8 @@ return (
 )
 }
 
-function StackNavB() {
-//Context 2
-const context2InitialState = {
-pnrNumber: null,
-totalBagsChecked: null,
-comments: null
-};
-const [passengerCheckInInfo, setPassengerCheckInInfo] = useState(context2InitialState);
-function setPNRNumber(pnrNumber) {
-const newState = { ...passengerCheckInInfo, pnrNumber };
-setPassengerCheckInInfo(newState);
-}
-function setTotalBagsChecked(totalBagsChecked) {
-const newState = { ...passengerCheckInInfo, totalBagsChecked };
-setPassengerCheckInInfo(newState);
-}
-function setComments(comments) {
-const newState = { ...passengerCheckInInfo, comments };
-setPassengerCheckInInfo(newState);
-}
-const context2Setters = {
-setPNRNumber,
-setTotalBagsChecked,
-setComments
-}
-return (
-<Context2.Provider value={{ ...passengerCheckInInfo, ...context2Setters }}>
-<Stack.Navigator>
-<Stack.Screen name="Screen 5" component={Screen5} />
-<Stack.Screen name="Screen 6" component={Screen6} />
-<Stack.Screen name="Screen 7" component={Screen7} />
-<Stack.Screen name="Screen 8" component={Screen8} />
-</Stack.Navigator>
-</Context2.Provider>
-)
-}
 
-function MyTabs2({route , navigation}) {
-  useLayoutEffect(() => {
-    const setNavigationConfig = () => {
-      const navigationOptions = () => {
 
-        //let rows = route.params.item.order_details.length
-        //console.log('length' , route.params.item.order_details.length)
-      
-        return {
-          
-          headerLeft: () => {
-           
-          
-            let button = 0 ? (
-             <View style={{
-           flexDirection: "row",
-           padding: 1,
-           justifyContent: "space-between",
-           alignItems: "center" ,
-           }}>
-             <Ionicons  name="close-circle-outline" size={30} color="#fff"
-             onPress={()=>navigation.goBack()}  
-             />
-             <AntDesign style  = {{margin:10}} name="checkcircleo" size={24} color="#fff"
-             onPress={()=>{alert('toto');navigation.navigate('SignFormScreen')}} />
-           </View>
-            )
-            : (
-             <View style={{
-           flexDirection: "row",
-           padding: 1,
-           justifyContent: "space-between",
-           alignItems: "center" ,
-           }}>
-             <Ionicons  name="close-circle-outline" size={30} color="#fff"
-             onPress={()=>navigation.goBack()}  
-             />
-           
-           </View> 
-            )
-           
-    return  button;
-          }
-        };
-      };
-
-      const navigationParams = () => {
-        return {
-          rows: route.params.rows,
-          
-        };
-      };
-          navigation.setParams(navigationParams());
-          navigation.setOptions(navigationOptions());
-    };
-
-    setNavigationConfig();
-  }, []);
-  return (
-    <topTab.Navigator
-      tabBarPosition="bottom"
-      
-       screenOptions={({ route }) => ({
-        swipeEnabled:false,
-      tabBarStyle: ((route) => {
-              const routeName = getFocusedRouteNameFromRoute(route) ?? ""
-             // console.log(routeName)
-              if (routeName === 'FormEDIScreen') {
-                return { display: "none" }
-              }
-              if (routeName === 'SignFormScreen') {
-                return { display: "none" }
-              }
-              if (routeName === 'ChooseRedStampReasonScreen') {
-                return { display: "none" }
-              }
-              if (routeName === 'DocumentReview') {
-                return { display: "none" }
-              }
-              return
-              return
-            })(route),
-          tabBarIcon: ({ focused, color, size }) => {
-            let iconName;
-
-            if (route.name === 'Home') {
-              iconName = focused
-                ? 'ios-information-circle'
-                : 'ios-information-circle-outline';
-            } else if (route.name === 'Settings') {
-              iconName = focused ? 'ios-list-box' : 'ios-list';
-            }
-
-            // You can return any component that you like here!
-            return <Ionicons name={iconName} size={size} color={color} />;
-          },
-          tabBarActiveTintColor: 'tomato',
-          tabBarInactiveTintColor: 'gray',
-        })}>
-      <topTab.Screen name="StackNav A" component={StackNavA} initialParams={{id: route.params.id ,
-       orderNumber:route.params.orderNumber
-        , date:route.params.date , rows:route.params.rows , quantity:route.params.quantity}} />
-      <topTab.Screen name="StackNav B" component={StackNavB} initialParams={{item: route.params.item }} /> 
-
-    </topTab.Navigator>
-  );
-}
 
 //   function MainTabNavigator({route}) {
   
@@ -521,20 +379,7 @@ function App() {
            
        })} />
 
-       <Stack.Screen name="MyTabs2" component={MyTabs2}
-   options={({ route }) => ({ headerStyle: {
-        backgroundColor: '#2F95D6',
-        borderBottomColor: '#fff',
-        borderBottomWidth: 3,
-      },  headerShown:false,
      
-       headerTintColor: '#fff',
-       headerTitleStyle: {
-        fontSize: 18,
-      
-      }, title: route.params.titre , reference:route.params.reference ,rows:route.params.rows 
-           
-       })} />
       </Stack.Navigator>
     </NavigationContainer>
     {/* </EDIContext.Provider> */}
